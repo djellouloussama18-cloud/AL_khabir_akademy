@@ -1,0 +1,4066 @@
+﻿<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>أكاديمية الخبير — El Khabir Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@500;600;700;800&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET & VARIABLES ===== */
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    :root {
+      --bg-white:      #ffffff;
+      --bg-soft:       #faf8f4;
+      --text-dark:     #1a1512;
+      --text-muted:    #6b6259;
+      --gold:          #c9a227;
+      --gold-bright:   #eecb7a;
+      --gold-deep:     #8a641c;
+      --gold-pale:     #f6e4b8;
+      --ivory:         #f2e9d8;
+      --obsidian:      #0a0806;
+      --obsidian-2:    #120c0f;
+      --aubergine-1:   #1c0f22;
+      --aubergine-2:   #2b1638;
+      --border-light:  #ece4d3;
+      --success-green: #1f8a4c;
+      --font-display: 'El Messiri', serif;
+      --font-body: 'Tajawal', sans-serif;
+      --radius: 16px;
+      --shadow-soft: 0 4px 24px rgba(26,21,18,0.06);
+      --shadow-form: 0 8px 40px rgba(26,21,18,0.08);
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    html { scroll-behavior: smooth; scrollbar-gutter: stable; overflow-x: hidden; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-white);
+      color: var(--text-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { max-width:100%; display:block; }
+    a { text-decoration:none; color:inherit; }
+
+    /* ===== MARQUEE ===== */
+    .marquee-wrap {
+      background: var(--text-dark);
+      overflow: hidden;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    .marquee-track {
+      display: flex;
+      white-space: nowrap;
+      animation: marqueeScroll 28s linear infinite;
+      will-change: transform;
+    }
+    .marquee-track span {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 14px;
+      color: var(--gold-bright);
+      padding: 0 40px;
+      flex-shrink: 0;
+    }
+    @keyframes marqueeScroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ===== CONTAINER ===== */
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    @media (min-width:768px) {
+      .container { max-width: 720px; }
+    }
+    @media (min-width:1024px) {
+      .container { max-width: 960px; }
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: 40px 0 24px;
+      background: var(--bg-white);
+      text-align: center;
+    }
+    .hero-logo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      border: 2px solid var(--gold);
+      padding: 4px;
+      animation: fadeDown 0.8s ease-out;
+      box-shadow: 0 0 20px rgba(201,162,39,0.25), 0 0 50px rgba(201,162,39,0.1);
+      position: relative;
+      z-index: 1;
+    }
+    .hero-logo img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 26px;
+      line-height: 1.35;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+    }
+    .hero .subtitle {
+      font-size: 16px;
+      color: var(--text-muted);
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+    .hero-trust {
+      font-size: 14px;
+      color: var(--gold);
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .hero-product {
+      max-width: 340px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .hero-product::before {
+      content: '';
+      position: absolute;
+      inset: -20px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(201,162,39,0.18) 0%, transparent 70%);
+      pointer-events: none;
+      animation: heroGlow 3s ease-in-out infinite alternate;
+    }
+    .hero-product img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: 3px solid var(--gold);
+      box-shadow: 0 8px 32px rgba(26,21,18,0.12), 0 0 30px rgba(201,162,39,0.4), 0 0 60px rgba(201,162,39,0.2);
+      display: block;
+      position: relative;
+      z-index: 1;
+      animation: heroFloat 4s ease-in-out infinite;
+    }
+    @keyframes heroFloat {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-8px); }
+    }
+    @keyframes heroGlow {
+      0%   { opacity: 0.6; transform: scale(1); }
+      100% { opacity: 1;   transform: scale(1.08); }
+    }
+    @keyframes fadeDown {
+      from { opacity:0; transform:translateY(-20px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    /* ===== FORM SECTION ===== */
+    .form-section {
+      padding: 32px 0 56px;
+    }
+    .form-section .section-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 22px;
+      text-align: center;
+      margin-bottom: 24px;
+      color: var(--text-dark);
+    }
+    .form-card {
+      position: relative;
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: 20px;
+      box-shadow: 0 16px 48px rgba(26,21,18,0.08), 0 4px 16px rgba(26,21,18,0.04);
+      padding: 32px 28px;
+    }
+    .form-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 20px;
+      right: 20px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold-deep), var(--gold-bright), var(--gold-deep));
+      border-radius: 4px 4px 0 0;
+      opacity: 0.6;
+    }
+    .form-card .form-subtitle {
+      text-align: center;
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    /* ---- Package selector ---- */
+    .pkg-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .pkg-card {
+      position: relative;
+      background: var(--bg-white);
+      border: 2px solid var(--border-light);
+      border-radius: 14px;
+      padding: 16px 18px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+      overflow: hidden;
+    }
+    .pkg-card:hover {
+      border-color: var(--gold);
+    }
+    .pkg-card.active {
+      border-color: var(--gold);
+      box-shadow: 0 0 20px rgba(201,162,39,0.15);
+    }
+    .pkg-card[data-pkg="bundle"] {
+      border-color: var(--gold);
+      background: linear-gradient(135deg, rgba(201,162,39,0.08), rgba(238,203,122,0.04));
+    }
+    .pkg-card[data-pkg="bundle"].active {
+      background: linear-gradient(135deg, var(--gold-bright), var(--gold));
+    }
+    .pkg-card[data-pkg="bundle"].active .pkg-name,
+    .pkg-card[data-pkg="bundle"].active .pkg-desc,
+    .pkg-card[data-pkg="bundle"].active .pkg-price {
+      color: var(--obsidian);
+    }
+    .pkg-card[data-pkg="bundle"] + .pkg-card {
+      border-color: var(--border-light);
+      background: var(--bg-white);
+    }
+    .pkg-card[data-pkg="bundle"] + .pkg-card.active {
+      border-color: var(--gold);
+      box-shadow: 0 0 16px rgba(201,162,39,0.1);
+    }
+    .pkg-badge {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: linear-gradient(135deg, #e74c3c, #c0392b);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 0 0 12px 0;
+      font-family: var(--font-body);
+    }
+    .pkg-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--text-dark);
+      margin-bottom: 2px;
+    }
+    .pkg-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .pkg-price {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 20px;
+      color: var(--gold-deep);
+    }
+
+    /* ---- Shrink secondary cards ---- */
+    .pkg-card[data-pkg="book"],
+    .pkg-card[data-pkg="flash"] {
+      padding: 10px 12px;
+      border-width: 1.5px;
+    }
+    .pkg-card[data-pkg="book"] .pkg-name,
+    .pkg-card[data-pkg="flash"] .pkg-name {
+      font-size: 13px;
+    }
+    .pkg-card[data-pkg="book"] .pkg-price,
+    .pkg-card[data-pkg="flash"] .pkg-price {
+      font-size: 16px;
+    }
+    .pkg-inner-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    @media (min-width: 560px) {
+      .pkg-group {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      .pkg-card[data-pkg="bundle"] {
+        width: 100%;
+      }
+      .pkg-card[data-pkg="book"],
+      .pkg-card[data-pkg="flash"] {
+        flex: 1;
+        min-width: 0;
+      }
+    }
+
+    /* ---- Form fields ---- */
+    .field-group {
+      margin-bottom: 26px;
+    }
+    .field-group label {
+      display: block;
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+      position: relative;
+    }
+    .field-group label::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      right: 0;
+      width: 24px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 1px;
+      opacity: 0.5;
+    }
+    .input-wrap {
+      position: relative;
+    }
+    .input-wrap .icon {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .input-wrap .icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .input-wrap input,
+    .input-wrap select {
+      width: 100%;
+      padding: 14px 48px 14px 16px;
+      border: 1.5px solid rgba(201,162,39,0.35);
+      border-radius: 16px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--text-dark);
+      background: var(--bg-white);
+      transition: border-color var(--transition), box-shadow var(--transition);
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .input-wrap select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9a227' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: left 16px center;
+      padding-left: 40px;
+    }
+    .input-wrap input:focus,
+    .input-wrap select:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,162,39,0.15);
+    }
+    .input-wrap select:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      background-color: #f9f9f9;
+    }
+    .input-wrap .icon.left {
+      right: auto;
+      left: 14px;
+    }
+
+    /* ---- Delivery type cards ---- */
+    .delivery-toggle {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+    .delivery-card {
+      border: 1.5px solid rgba(201,162,39,0.2);
+      border-radius: 16px;
+      padding: 18px 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
+      user-select: none;
+    }
+    .delivery-card:hover { border-color: var(--gold); }
+    .delivery-card.active {
+      border-color: var(--gold);
+      background: rgba(201,162,39,0.13);
+      box-shadow: 0 2px 16px rgba(201,162,39,0.12);
+    }
+    .delivery-card .d-icon {
+      display: block;
+      margin-bottom: 6px;
+    }
+    .delivery-card .d-icon svg {
+      width: 26px;
+      height: 26px;
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .delivery-card.active .d-icon svg {
+      stroke: var(--gold-deep);
+    }
+    .delivery-card .d-title {
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--text-dark);
+    }
+    .delivery-card .d-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* ---- Pricing summary ---- */
+    .pricing-summary {
+      background: var(--bg-soft);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 22px;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+    .pricing-summary .row {
+      display: flex;
+      justify-content: space-between;
+    }
+    .pricing-summary .total {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--gold-deep);
+      border-top: 1px solid var(--border-light);
+      padding-top: 8px;
+      margin-top: 8px;
+    }
+
+    /* ---- Submit button ---- */
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: var(--success-green);
+      color: #fff;
+      border: none;
+      border-radius: 14px;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .submit-btn:hover {
+      background: #17743e;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(31,138,76,0.25);
+    }
+    .submit-btn:active { transform: translateY(0); }
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    /* ---- Success message ---- */
+    .success-msg {
+      display: none;
+      text-align: center;
+      padding: 32px 20px;
+    }
+    .success-msg.show { display: block; }
+    .success-msg .check-icon {
+      font-size: 56px;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .success-msg h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+    .success-msg p {
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    /* ---- Inline validation ---- */
+    .field-error {
+      font-size: 12px;
+      color: #d32f2f;
+      margin-top: 4px;
+      display: none;
+    }
+    .input-wrap.has-error input,
+    .input-wrap.has-error select {
+      border-color: #d32f2f;
+    }
+    .input-wrap.has-error .select-trigger {
+      border-color: #d32f2f;
+    }
+
+    /* ===== CUSTOM SELECT ===== */
+    .custom-select {
+      position: relative;
+    }
+    .select-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 14px 48px 14px 16px;
+      border: 1.5px solid rgba(201,162,39,0.35);
+      border-radius: 16px;
+      background: var(--bg-white);
+      cursor: pointer;
+      user-select: none;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      min-height: 52px;
+    }
+    .select-trigger:hover {
+      border-color: var(--gold);
+    }
+    .custom-select.open .select-trigger {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,162,39,0.15);
+    }
+    .select-trigger-text {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--text-dark);
+      flex: 1;
+      text-align: right;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .select-trigger-text.placeholder {
+      color: var(--text-muted);
+    }
+    .select-arrow {
+      display: flex;
+      align-items: center;
+      margin-right: 8px;
+      flex-shrink: 0;
+      transition: transform var(--transition);
+    }
+    .custom-select.open .select-arrow {
+      transform: rotate(180deg);
+    }
+    .select-options {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      background: var(--bg-white);
+      border: 1.5px solid rgba(201,162,39,0.3);
+      border-radius: 14px;
+      box-shadow: 0 8px 32px rgba(26,21,18,0.12);
+      max-height: 280px;
+      overflow-y: auto;
+      z-index: 100;
+      display: none;
+      padding: 6px 0;
+      margin: 0;
+      list-style: none;
+    }
+    .custom-select.open .select-options {
+      display: block;
+    }
+    .select-options li {
+      padding: 11px 16px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text-dark);
+      cursor: pointer;
+      text-align: right;
+      transition: background 0.15s, color 0.15s;
+    }
+    .select-options li:hover,
+    .select-options li.highlighted {
+      background: rgba(201,162,39,0.1);
+      color: var(--gold-deep);
+    }
+    .select-options li.selected {
+      font-weight: 700;
+      color: var(--gold-deep);
+      background: rgba(201,162,39,0.06);
+    }
+    .select-options li.placeholder-option {
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+    .select-options li.placeholder-option:hover {
+      background: transparent;
+      color: var(--text-muted);
+    }
+    .select-options::-webkit-scrollbar {
+      width: 6px;
+    }
+    .select-options::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .select-options::-webkit-scrollbar-thumb {
+      background: rgba(201,162,39,0.3);
+      border-radius: 3px;
+    }
+    .select-options::-webkit-scrollbar-thumb:hover {
+      background: rgba(201,162,39,0.5);
+    }
+    .custom-select.disabled .select-trigger {
+      opacity: 0.5;
+      cursor: not-allowed;
+      background-color: #f9f9f9;
+    }
+    .custom-select.disabled .select-arrow {
+      opacity: 0.3;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (min-width:768px) {
+      .hero h1 { font-size: 34px; }
+      .hero-product { max-width: 420px; }
+      .form-card { padding: 36px 32px; }
+      .delivery-card .d-title { font-size: 15px; }
+    }
+    @media (min-width:1024px) {
+      .hero { padding: 56px 0 32px; }
+      .hero h1 { font-size: 40px; }
+      .hero-product { max-width: 500px; }
+    }
+
+    /* ===== CONTINUOUS SALES SECTION ===== */
+    .continuous-section {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 80% 60% at 15% 10%, rgba(201,162,39,0.08), transparent 60%),
+        radial-gradient(ellipse 50% 35% at 8% 5%, rgba(238,203,122,0.05), transparent 50%),
+        var(--obsidian);
+    }
+    .continuous-section .bg-particles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .continuous-section .bg-particles span {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--gold-bright);
+      pointer-events: none;
+    }
+    .continuous-section .block {
+      position: relative;
+      z-index: 1;
+      padding: 70px 0;
+    }
+    .continuous-section .block-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ===== Reveal Animation ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px) scale(0.97);
+      transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* ===== Floating & Glow Animations ===== */
+    @keyframes gentleFloat {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-10px); }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50%      { opacity: 1;   transform: scale(1.06); }
+    }
+
+    /* ===== Block 1 — Logo ===== */
+    .block-logo {
+      text-align: center;
+      padding-top: 100px !important;
+    }
+    .block-logo .logo-ring {
+      width: 150px; height: 150px;
+      border-radius: 50%;
+      position: relative;
+      margin: 0 auto;
+      background: radial-gradient(circle at 40% 40%, #14100d, #0a0806);
+      z-index: 1;
+    }
+    .block-logo .logo-ring::before {
+      content: '';
+      position: absolute;
+      inset: -30px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,162,39,0.2) 0%, transparent 70%);
+      animation: pulseGlow 3s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .block-logo .logo-ring::after {
+      content: '';
+      position: absolute; inset: 0;
+      border-radius: 50%;
+      border: 3px solid var(--gold);
+    }
+    .block-logo .logo-ring img {
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    /* ===== Block 2 — Combined Product Hero ===== */
+    .block-combo {
+      text-align: center;
+    }
+    .block-combo h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(24px, 4.5vw, 34px);
+      background: linear-gradient(135deg, var(--gold-bright), var(--gold-deep));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 40px;
+      line-height: 1.4;
+    }
+    .block-combo .combo-img-wrap {
+      max-width: 480px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .block-combo .combo-img-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -30px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(201,162,39,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .block-combo .combo-img-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      position: relative;
+      z-index: 1;
+      animation: gentleFloat 5s ease-in-out infinite;
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
+      -webkit-mask-image: radial-gradient(ellipse, black 65%, transparent 100%);
+      mask-image: radial-gradient(ellipse, black 65%, transparent 100%);
+    }
+
+    /* ===== Block — Audience Targeting ===== */
+    .block-audience {
+      text-align: center;
+      padding-bottom: 20px !important;
+    }
+    .block-audience h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(24px, 4vw, 32px);
+      background: linear-gradient(135deg, var(--gold-bright), var(--gold-deep));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    .block-audience .au-sub {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+    .au-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+    .au-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border: 1px solid rgba(201,162,39,0.3);
+      border-radius: 50px;
+      background: transparent;
+      color: var(--gold-pale);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s;
+      user-select: none;
+      white-space: nowrap;
+    }
+    .au-tab:hover {
+      border-color: var(--gold);
+      color: var(--gold-bright);
+    }
+    .au-tab.active {
+      background: linear-gradient(135deg, var(--gold-bright), var(--gold));
+      color: var(--obsidian);
+      border-color: transparent;
+      box-shadow: 0 0 20px rgba(201,162,39,0.25);
+    }
+    .au-tab .tab-icon {
+      display: flex;
+      align-items: center;
+      font-size: 18px;
+      line-height: 1;
+    }
+    .au-tab .tab-icon svg {
+      width: 20px;
+      height: 20px;
+      display: block;
+    }
+    .au-panels {
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .au-panel {
+      display: none;
+      text-align: right;
+    }
+    .au-panel.active {
+      display: block;
+      animation: auFadeIn 0.35s ease;
+    }
+    @keyframes auFadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .au-panel ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .au-panel ul li {
+      position: relative;
+      padding: 10px 24px 10px 0;
+      font-size: 14px;
+      color: var(--gold-pale);
+      line-height: 1.6;
+      border-bottom: 1px solid rgba(201,162,39,0.08);
+    }
+    .au-panel ul li:last-child {
+      border-bottom: none;
+    }
+    .au-panel ul li::before {
+      content: "⚠";
+      position: absolute;
+      right: 0;
+      top: 10px;
+      font-size: 13px;
+      opacity: 0.7;
+    }
+
+    /* ---- Solution transition ---- */
+    .au-solution {
+      margin-top: 36px;
+      padding: 28px 24px;
+      background: rgba(20,15,10,0.4);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(201,162,39,0.15);
+      border-radius: 16px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .au-solution h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(18px, 3vw, 24px);
+      background: linear-gradient(135deg, var(--gold-bright), var(--gold-deep));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 18px;
+    }
+    .au-solution ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      text-align: right;
+    }
+    .au-solution ul li {
+      padding: 8px 28px 8px 0;
+      font-size: 14px;
+      color: var(--ivory);
+      line-height: 1.6;
+      position: relative;
+    }
+    .au-solution ul li::before {
+      content: "✓";
+      position: absolute;
+      right: 0;
+      top: 8px;
+      color: var(--gold-bright);
+      font-weight: 800;
+      font-size: 16px;
+    }
+
+    /* ===== Block 4 — Feature Cards ===== */
+    .block-features h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(22px, 4vw, 30px);
+      background: linear-gradient(135deg, var(--gold-bright), var(--gold-deep));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .feature-card {
+      background: rgba(20,15,10,0.5);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(201,162,39,0.2);
+      border-radius: 16px;
+      padding: 28px 18px;
+      text-align: center;
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    }
+    .feature-card:hover {
+      border-color: rgba(201,162,39,0.5);
+      box-shadow: 0 0 30px rgba(201,162,39,0.08);
+      transform: translateY(-3px);
+    }
+    .feature-card .f-icon {
+      width: 40px; height: 40px;
+      margin: 0 auto 14px;
+      color: var(--gold-bright);
+    }
+    .feature-card .f-icon svg {
+      width: 100%; height: 100%;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .feature-card h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--ivory);
+      margin-bottom: 6px;
+    }
+    .feature-card p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ===== Block 5 — Book Showcase ===== */
+    .block-book {
+      text-align: center;
+    }
+    .block-book .book-layout {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+      text-align: right;
+    }
+    .block-book .book-img-wrap {
+      flex: 0 0 280px;
+      position: relative;
+    }
+    .block-book .book-img-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -20px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(201,162,39,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .block-book .book-img-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      position: relative;
+      z-index: 1;
+      animation: gentleFloat 5s ease-in-out infinite;
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
+      -webkit-mask-image: radial-gradient(ellipse, black 65%, transparent 100%);
+      mask-image: radial-gradient(ellipse, black 65%, transparent 100%);
+    }
+    .block-book .book-text {
+      flex: 1;
+    }
+    .block-book .book-text h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(20px, 3vw, 28px);
+      background: linear-gradient(135deg, var(--gold-bright), var(--gold-deep));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 16px;
+    }
+    .block-book .book-text p {
+      font-size: 15px;
+      color: var(--gold-pale);
+      line-height: 1.8;
+      max-width: 500px;
+    }
+
+    /* ===== Block 6 — Flash Showcase ===== */
+    .block-flash {
+      text-align: center;
+    }
+    .block-flash .flash-layout {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+      text-align: right;
+      flex-direction: row-reverse;
+    }
+    .block-flash .flash-img-wrap {
+      flex: 0 0 240px;
+      position: relative;
+    }
+    .block-flash .flash-img-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -20px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(201,162,39,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .block-flash .flash-img-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      position: relative;
+      z-index: 1;
+      animation: gentleFloat 5s ease-in-out infinite 0.5s;
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
+      -webkit-mask-image: radial-gradient(ellipse, black 65%, transparent 100%);
+      mask-image: radial-gradient(ellipse, black 65%, transparent 100%);
+    }
+    .block-flash .flash-text {
+      flex: 1;
+    }
+    .block-flash .flash-text h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(20px, 3vw, 28px);
+      background: linear-gradient(135deg, var(--gold-bright), var(--gold-deep));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 16px;
+    }
+    .block-flash .flash-text p {
+      font-size: 15px;
+      color: var(--gold-pale);
+      line-height: 1.8;
+      max-width: 500px;
+      margin-right: auto;
+    }
+
+    /* ===== Block 7 — Telegram Consultation ===== */
+    .block-telegram {
+      text-align: center;
+      padding-bottom: 20px !important;
+    }
+    .block-telegram .telegram-icon {
+      width: 90px; height: 90px;
+      margin: 0 auto 20px;
+      position: relative;
+    }
+    .block-telegram .telegram-icon::before {
+      content: '';
+      position: absolute;
+      inset: -25px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,162,39,0.4) 0%, rgba(201,162,39,0.1) 40%, transparent 70%);
+      animation: pulseGlow 2.5s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .block-telegram .telegram-icon svg {
+      width: 100%; height: 100%;
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+    .block-telegram h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(22px, 3.5vw, 30px);
+      background: linear-gradient(135deg, var(--gold-bright), var(--gold-deep));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 16px;
+    }
+    .block-telegram p {
+      font-size: 15px;
+      color: var(--gold-pale);
+      line-height: 1.8;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .block-telegram .telegram-highlight {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 24px;
+      border: none;
+      border-radius: 50px;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 15px;
+      color: var(--obsidian);
+      background: linear-gradient(135deg, var(--gold-bright), var(--gold));
+      box-shadow: 0 0 20px rgba(201,162,39,0.3);
+    }
+    .block-telegram .telegram-highlight::before {
+      content: "✅ ";
+    }
+
+    /* ===== Block — Value‑Stack ===== */
+    .block-value-stack {
+      text-align: center;
+      padding-bottom: 20px !important;
+    }
+    .block-value-stack h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(22px, 4vw, 30px);
+      background: linear-gradient(135deg, var(--gold-bright), var(--gold-deep));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 10px;
+    }
+    .block-value-stack .v-sub {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+    .vs-card {
+      max-width: 480px;
+      margin: 0 auto;
+      background: rgba(20,15,10,0.4);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(201,162,39,0.15);
+      border-radius: 16px;
+      padding: 28px 24px;
+    }
+    .vs-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      font-size: 15px;
+      color: var(--gold-pale);
+      border-bottom: 1px solid rgba(201,162,39,0.08);
+    }
+    .vs-row:last-child { border-bottom: none; }
+    .vs-row .vs-label { text-align: right; }
+    .vs-row .vs-price {
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--ivory);
+      white-space: nowrap;
+    }
+    .vs-subtotal {
+      padding: 10px 0;
+      font-size: 14px;
+      color: var(--text-muted);
+      border-bottom: 1px solid rgba(201,162,39,0.12);
+    }
+    .vs-subtotal .vs-amount {
+      font-family: var(--font-display);
+      color: var(--gold-pale);
+      font-weight: 600;
+      text-decoration: line-through;
+    }
+    .vs-bundle {
+      padding: 16px 0 10px;
+    }
+    .vs-bundle .vs-bundle-label {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .vs-bundle .vs-bundle-price {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(26px, 5vw, 34px);
+      background: linear-gradient(135deg, var(--gold-bright), var(--gold-deep));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .vs-bonus {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(201,162,39,0.1);
+    }
+    .vs-bonus-item {
+      font-size: 13px;
+      color: var(--gold-pale);
+      padding: 4px 0;
+      text-align: center;
+    }
+    .vs-bonus-item::before {
+      content: "+ ";
+      color: var(--gold-bright);
+      font-weight: 700;
+    }
+    .vs-note {
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* ===== Block — FAQ ===== */
+    .block-faq {
+      padding-bottom: 20px !important;
+    }
+    .block-faq h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(22px, 4vw, 30px);
+      background: linear-gradient(135deg, var(--gold-bright), var(--gold-deep));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .faq-list {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      background: rgba(20,15,10,0.35);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(201,162,39,0.12);
+      border-radius: 12px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+    .faq-q {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 18px;
+      cursor: pointer;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--ivory);
+      transition: background 0.3s;
+      user-select: none;
+    }
+    .faq-q:hover { background: rgba(201,162,39,0.06); }
+    .faq-q .faq-arrow {
+      font-size: 12px;
+      color: var(--gold-bright);
+      transition: transform 0.3s;
+    }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      padding: 0 18px;
+      font-size: 14px;
+      color: var(--gold-pale);
+      line-height: 1.7;
+    }
+    .faq-item.open .faq-a {
+      max-height: 300px;
+      padding: 0 18px 16px;
+    }
+
+    /* ===== Block 10 — Final CTA ===== */
+    .block-cta {
+      text-align: center;
+      padding-top: 30px !important;
+      padding-bottom: 120px !important;
+    }
+    .block-cta h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(24px, 4vw, 32px);
+      background: linear-gradient(135deg, var(--ivory), var(--gold-pale));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      max-width: 500px;
+      margin: 0 auto 20px;
+      line-height: 1.5;
+    }
+    .block-cta .urgency {
+      font-size: 14px;
+      color: var(--gold-bright);
+      margin-bottom: 24px;
+      font-weight: 600;
+    }
+    .block-cta .cta-btn {
+      display: inline-block;
+      padding: 18px 52px;
+      background: linear-gradient(135deg, var(--gold-bright), var(--gold-deep));
+      color: var(--obsidian);
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 20px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 30px rgba(201,162,39,0.3);
+      text-decoration: none;
+    }
+    .block-cta .cta-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 45px rgba(201,162,39,0.5);
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 767px) {
+      .continuous-section .block { padding: 40px 0; }
+      .block-logo { padding-top: 50px !important; }
+      .block-logo .logo-ring { width: 110px; height: 110px; }
+      .block-logo .logo-ring::before { inset: -20px; }
+      .block-combo .combo-img-wrap { max-width: 320px; }
+      .features-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+      .feature-card { padding: 20px 14px; }
+      .feature-card .f-icon { width: 32px; height: 32px; }
+      .block-book .book-layout { flex-direction: column !important; gap: 24px; }
+      .block-book .book-img-wrap { flex: 0 0 200px; }
+      .block-book .book-text p { font-size: 14px; }
+      .block-flash .flash-layout { flex-direction: column !important; gap: 24px; }
+      .block-flash .flash-img-wrap { flex: 0 0 170px; }
+      .block-flash .flash-text p { font-size: 14px; }
+      .block-telegram .telegram-icon { width: 70px; height: 70px; }
+      .block-telegram p { font-size: 14px; }
+      .block-cta { padding-bottom: 60px !important; }
+      .block-cta .cta-btn { padding: 14px 36px; font-size: 17px; }
+    }
+
+    /* ===== Global Floating CTA ===== */
+    .global-cta {
+      position: fixed;
+      z-index: 9999;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 28px;
+      background: linear-gradient(135deg, var(--gold-bright), var(--gold-deep));
+      color: var(--obsidian);
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 17px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 4px 24px rgba(201,162,39,0.35);
+      transition: opacity 0.4s ease;
+      opacity: 0;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    .global-cta.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .global-cta .cta-inner {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      will-change: transform;
+    }
+    .global-cta.visible .cta-inner {
+      animation: ctaFloat 2s ease-in-out infinite;
+    }
+    .global-cta:hover .cta-inner {
+      animation: none;
+      transform: translateY(-2px);
+    }
+    .global-cta .g-icon {
+      font-size: 20px;
+      line-height: 1;
+    }
+    @keyframes ctaFloat {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-8px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .global-cta.visible .cta-inner {
+        animation: none;
+      }
+    }
+    @media (min-width: 768px) {
+      .global-cta {
+        left: auto;
+        right: 30px;
+        transform: none;
+        padding: 16px 32px;
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== MARQUEE ===== -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span>🚚 توصيل مجاني لباب دارك عبر كل ولايات الجزائر — الدفع عند الاستلام — الكمية محدودة</span>
+      <span>🚚 توصيل مجاني لباب دارك عبر كل ولايات الجزائر — الدفع عند الاستلام — الكمية محدودة</span>
+      <span>🚚 توصيل مجاني لباب دارك عبر كل ولايات الجزائر — الدفع عند الاستلام — الكمية محدودة</span>
+      <span>🚚 توصيل مجاني لباب دارك عبر كل ولايات الجزائر — الدفع عند الاستلام — الكمية محدودة</span>
+    </div>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-logo">
+        <img src="images/logo.jpeg" alt="El Khabir Academy">
+      </div>
+      <h1>كل ما تحتاجه لتصبح خبيرًا عقاريًا... مهما كان مجالك</h1>
+      <p class="subtitle">دليلك الكامل لفهم القانون العقاري، من الفحص إلى التملك، بثقة واحترافية</p>
+      <div class="hero-trust">🚚 الدفع عند الاستلام — توصيل مجاني لكل الولايات</div>
+      <div class="hero-product">
+        <img src="images/product-hero.png" alt="دليل أول صفقة عقارية والعلبة الذهبية">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FORM ===== -->
+  <section class="form-section" id="order-form">
+    <div class="container">
+      <h2 class="section-title">اختر باقتك الآن وابدأ رحلتك نحو الاحتراف العقاري</h2>
+      <div class="form-card" id="formCard">
+
+        <!-- Package heading -->
+        <div class="form-subtitle">اختر باقتك المناسبة — كل الخيارات متاحة</div>
+
+        <!-- Package selector cards -->
+        <div class="pkg-group" id="packageGroup">
+          <div class="pkg-card active" data-pkg="bundle">
+            <div class="pkg-badge">الأكثر طلبًا 🔥</div>
+            <div class="pkg-name">الباقة الكاملة</div>
+            <div class="pkg-desc">الكتاب + Flash Disk + متابعة حصرية عبر Telegram</div>
+            <div class="pkg-price">7,900 دج</div>
+          </div>
+          <div class="pkg-card" data-pkg="book">
+            <div class="pkg-name">الكتاب فقط</div>
+            <div class="pkg-desc">الدليل الشامل المطبوع</div>
+            <div class="pkg-price">3,500 دج</div>
+          </div>
+          <div class="pkg-card" data-pkg="flash">
+            <div class="pkg-name">Flash Disk فقط</div>
+            <div class="pkg-desc">المحتوى الرقمي الحصري</div>
+            <div class="pkg-price">6,900 دج</div>
+          </div>
+        </div>
+        <div class="field-error" id="packageError" style="text-align:center;margin-top:-6px;margin-bottom:12px;">يرجى اختيار باقتك</div>
+
+        <!-- Form body -->
+        <div id="formBody">
+          <!-- Full name -->
+          <div class="field-group">
+            <label for="fullName">الاسم الكامل</label>
+            <div class="input-wrap">
+              <span class="icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+              <input type="text" id="fullName" placeholder="مثال: أحمد بن علي" autocomplete="name">
+            </div>
+            <div class="field-error" id="nameError">يرجى إدخال الاسم الكامل</div>
+          </div>
+
+          <!-- Phone -->
+          <div class="field-group">
+            <label for="phone">رقم الهاتف</label>
+            <div class="input-wrap">
+              <span class="icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+              <input type="tel" id="phone" placeholder="مثال: 0555123456" autocomplete="tel">
+            </div>
+            <div class="field-error" id="phoneError">يرجى إدخال رقم هاتف جزائري صحيح (05/06/07 — 10 أرقام)</div>
+          </div>
+
+          <!-- Wilaya -->
+          <div class="field-group">
+            <label for="wilaya">الولاية</label>
+            <div class="input-wrap">
+              <span class="icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+              <div class="custom-select" id="customWilaya">
+                <div class="select-trigger" role="combobox" tabindex="0" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="select-trigger-text placeholder">اختر الولاية</span>
+                  <span class="select-arrow"><svg width="12" height="8" viewBox="0 0 12 8"><path d="M1 1l5 5 5-5" stroke="#c9a227" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>
+                </div>
+                <ul class="select-options" role="listbox"></ul>
+              </div>
+              <select id="wilaya" style="display:none" aria-hidden="true">
+                <option value="">اختر الولاية</option>
+              </select>
+            </div>
+            <div class="field-error" id="wilayaError">يرجى اختيار الولاية</div>
+          </div>
+
+          <!-- Commune -->
+          <div class="field-group">
+            <label for="commune">البلدية</label>
+            <div class="input-wrap">
+              <span class="icon"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="1"/><line x1="9" y1="6" x2="15" y2="6"/><line x1="9" y1="10" x2="15" y2="10"/><line x1="9" y1="14" x2="15" y2="14"/></svg></span>
+              <div class="custom-select disabled" id="customCommune">
+                <div class="select-trigger" role="combobox" tabindex="0" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="select-trigger-text placeholder">اختر البلدية</span>
+                  <span class="select-arrow"><svg width="12" height="8" viewBox="0 0 12 8"><path d="M1 1l5 5 5-5" stroke="#c9a227" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span>
+                </div>
+                <ul class="select-options" role="listbox"></ul>
+              </div>
+              <select id="commune" style="display:none" aria-hidden="true" disabled>
+                <option value="">اختر البلدية</option>
+              </select>
+            </div>
+            <div class="field-error" id="communeError">يرجى اختيار البلدية</div>
+          </div>
+
+          <!-- Delivery type -->
+          <div class="field-group">
+            <label>نوع التوصيل</label>
+            <div class="delivery-toggle" id="deliveryToggle">
+              <div class="delivery-card" data-value="desk">
+                <span class="d-icon"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="7" y1="8" x2="7" y2="14"/><line x1="12" y1="8" x2="12" y2="14"/><line x1="17" y1="8" x2="17" y2="14"/><line x1="2" y1="16" x2="22" y2="16"/></svg></span>
+                <span class="d-title">توصيل إلى المكتب</span>
+                <span class="d-sub">Stop Desk</span>
+              </div>
+              <div class="delivery-card" data-value="home">
+                <span class="d-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+                <span class="d-title">توصيل إلى المنزل</span>
+                <span class="d-sub">Home Delivery</span>
+              </div>
+            </div>
+            <div class="field-error" id="deliveryError">يرجى اختيار نوع التوصيل</div>
+          </div>
+
+          <!-- Pricing summary -->
+          <div class="pricing-summary" id="pricingSummary" style="display:none;">
+            <div class="row">
+              <span>المنتج</span>
+              <span id="summaryProduct">7,900 دج</span>
+            </div>
+            <div class="row">
+              <span>التوصيل</span>
+              <span id="summaryDelivery" style="color:var(--gold);font-weight:700;">—</span>
+            </div>
+            <div class="row total">
+              <span>المجموع</span>
+              <span id="summaryTotal">—</span>
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <button class="submit-btn" id="submitBtn" disabled>
+            🛒 أكّد الطلب — <span id="btnTotal">7,900 دج</span>
+          </button>
+          <p style="text-align:center;font-size:12px;color:var(--text-muted);margin-top:10px;">
+            الدفع عند الاستلام — توصيل خلال 3–7 أيام عمل
+          </p>
+        </div>
+
+        <!-- Success message -->
+        <div class="success-msg" id="successMsg">
+          <span class="check-icon">✅</span>
+          <h3>تم تأكيد طلبك بنجاح!</h3>
+          <p>سيتم الاتصال بك قريباً على الرقم المدخل لتأكيد العنوان والتوصيل.</p>
+          <p style="margin-top:8px;font-size:13px;color:var(--gold);font-weight:700;">شكراً لثقتك في أكاديمية الخبير 🏅</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTINUOUS SALES SECTION ===== -->
+  <section class="continuous-section">
+
+    <div class="bg-particles">
+      <span style="left:5%;top:12%;width:2px;height:2px;opacity:0.35;animation:gentleFloat 7s ease-in-out infinite 0s"></span>
+      <span style="left:18%;top:6%;width:3px;height:3px;opacity:0.2;animation:gentleFloat 9s ease-in-out infinite 1s"></span>
+      <span style="left:30%;top:20%;width:1.5px;height:1.5px;opacity:0.3;animation:gentleFloat 6s ease-in-out infinite 2s"></span>
+      <span style="left:48%;top:8%;width:2.5px;height:2.5px;opacity:0.25;animation:gentleFloat 8s ease-in-out infinite 0.5s"></span>
+      <span style="left:65%;top:15%;width:2px;height:2px;opacity:0.2;animation:gentleFloat 7s ease-in-out infinite 1.5s"></span>
+      <span style="left:78%;top:5%;width:3px;height:3px;opacity:0.15;animation:gentleFloat 9s ease-in-out infinite 3s"></span>
+      <span style="left:92%;top:18%;width:1.5px;height:1.5px;opacity:0.25;animation:gentleFloat 6s ease-in-out infinite 0.8s"></span>
+      <span style="left:12%;top:35%;width:2px;height:2px;opacity:0.15;animation:gentleFloat 8s ease-in-out infinite 2.5s"></span>
+      <span style="left:55%;top:40%;width:1.5px;height:1.5px;opacity:0.2;animation:gentleFloat 7s ease-in-out infinite 1.2s"></span>
+      <span style="left:85%;top:30%;width:2px;height:2px;opacity:0.18;animation:gentleFloat 9s ease-in-out infinite 0.3s"></span>
+    </div>
+
+    <!-- Block 1 — Logo -->
+    <div class="block block-logo">
+      <div class="block-inner reveal">
+        <div class="logo-ring">
+          <img src="images/logo.jpeg" alt="El Khabir Academy">
+        </div>
+      </div>
+    </div>
+
+    <!-- Block 2 — Combined Product Hero -->
+    <div class="block block-combo">
+      <div class="block-inner reveal">
+        <h2>كل ما تحتاجه لتصبح خبيرًا عقاريًا... مهما كان مجالك</h2>
+        <div class="combo-img-wrap">
+          <img src="images/book-flash-combo.png" alt="الكتاب والعلبة الذهبية معاً">
+        </div>
+      </div>
+    </div>
+
+    <!-- Block 3 — Audience Targeting -->
+    <div class="block block-audience">
+      <div class="block-inner">
+        <h2 class="reveal">لمن يبحث عن النجاح في مجال العقار</h2>
+        <p class="au-sub">اكتشف كيف يمكن لهذا البرنامج أن يغيّر مسارك المهني</p>
+
+        <div class="au-tabs">
+          <button class="au-tab active" data-tab="0"><span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span> وسطاء عقاريين</button>
+          <button class="au-tab" data-tab="1"><span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span> موظفين</button>
+          <button class="au-tab" data-tab="2"><span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span> مستثمرين</button>
+          <button class="au-tab" data-tab="3"><span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span> خريجين جامعيين</button>
+        </div>
+
+        <div class="au-panels">
+          <div class="au-panel active" data-panel="0">
+            <ul>
+              <li>تضيع عليك الصفقات في آخر لحظة</li>
+              <li>تخاف من الوثائق غير القانونية</li>
+              <li>لا تعرف كيف تحمي عمولتك</li>
+              <li>تجد صعوبة في إيجاد مشترين جادين</li>
+              <li>لا تعرف كيف تتم إجراءات البيع عند الموثق</li>
+            </ul>
+          </div>
+          <div class="au-panel" data-panel="1">
+            <ul>
+              <li>راتبك لا يكفي</li>
+              <li>تبحث عن دخل إضافي دون ترك وظيفتك</li>
+              <li>تريد دخول مجال العقار لكن لا تعرف من أين تبدأ</li>
+              <li>تخاف من خسارة أموالك بسبب قلة الخبرة</li>
+              <li>تريد مشروعًا محترمًا ومستقلًا يمنحك دخلاً مرنًا بثقة ودون أخطاء</li>
+            </ul>
+          </div>
+          <div class="au-panel" data-panel="2">
+            <ul>
+              <li>تخاف من شراء عقار فيه مشاكل قانونية</li>
+              <li>لا تعرف كيف تقيّم العقار قبل الشراء</li>
+              <li>تريد التفاوض باحتراف</li>
+              <li>تبحث عن طرق لزيادة أرباحك وتقليل المخاطر</li>
+            </ul>
+          </div>
+          <div class="au-panel" data-panel="3">
+            <ul>
+              <li>لا توجد فرص عمل مناسبة</li>
+              <li>تريد تعلم مهنة مطلوبة</li>
+              <li>تبحث عن مصدر دخل دون رأس مال كبير</li>
+              <li>تريد اكتساب مهارة عملية تحقق لك دخلاً</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="au-solution reveal">
+          <h3>لهذا صممنا الباقة الاحترافية للعقار</h3>
+          <ul>
+            <li>Flash Disk فيه فيديوهات تطبيقية</li>
+            <li>كتاب مطبوع</li>
+            <li>عقود ونماذج جاهزة</li>
+            <li>متابعة على Telegram</li>
+            <li>توصيل مجاني إلى جميع الولايات</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Block 4 — Feature Cards -->
+    <div class="block block-features">
+      <div class="block-inner">
+        <h2 class="reveal">لماذا هذا المنتج مختلف؟</h2>
+        <div class="features-grid">
+          <div class="feature-card reveal">
+            <div class="f-icon">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2 L15 9 L22 9 L16 14 L18 21 L12 17 L6 21 L8 14 L2 9 L9 9 Z"/>
+              </svg>
+            </div>
+            <h3>دليل قانوني كامل</h3>
+            <p>كل ما تحتاج فهمه عن القانون العقاري في الجزائر</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="f-icon">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/>
+                <path d="M14 2v6h6"/>
+                <path d="M12 18v-4"/>
+                <path d="M12 10v.01"/>
+              </svg>
+            </div>
+            <h3>نماذج ووثائق</h3>
+            <p>عقود واتفاقات حقيقية محلّلة خطوة بخطوة</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="f-icon">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
+            </div>
+            <h3>خريطة الطريق</h3>
+            <p>خطة واضحة من البحث إلى التملك بدون أخطاء</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="f-icon">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
+            <h3>استشارة مباشرة</h3>
+            <p>فريق من الخبراء يجيب عن أسئلتك شخصياً</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Block 5 — Book Showcase -->
+    <div class="block block-book">
+      <div class="block-inner reveal">
+        <div class="book-layout">
+          <div class="book-img-wrap">
+            <img src="images/book-solo.png" alt="الدليل الشامل">
+          </div>
+          <div class="book-text">
+            <h3>دليل أول صفقة عقارية — دليلك الكامل نحو الاحتراف (3,500 دج)</h3>
+            <p>كتاب متكامل يشرح كل مراحل الصفقة العقارية بعبارة واضحة وأمثلة واقعية. من فحص الوثائق إلى التوقيع على العقد — ستكون على دراية كاملة بكل خطوة قبل أن تقدم عليها.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Block 5 — Flash Showcase -->
+    <div class="block block-flash">
+      <div class="block-inner reveal">
+        <div class="flash-layout">
+          <div class="flash-img-wrap">
+            <img src="images/flash-solo.png" alt="العلبة الذهبية">
+          </div>
+          <div class="flash-text">
+            <h3>العلبة الذهبية — محتوى رقمي حصري (6,900 دج)</h3>
+            <p>في علبة الفلاش الذهبية: فيديوهات شرح تفصيلية، نماذج عقود قابلة للتعديل، وثائق مرجعية، وقوالب فحص جاهزة. كل ما تحتاجه في متناول يدك رقمياً لأي وقت تحتاج إليه.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Block 6 — Telegram Consultation -->
+    <div class="block block-telegram">
+      <div class="block-inner reveal">
+        <div class="telegram-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="tgGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#eecb7a"/>
+                <stop offset="100%" stop-color="#c9a227"/>
+              </linearGradient>
+            </defs>
+            <path d="M22.264 2.428a1.5 1.5 0 0 0-1.527-.417L2.443 8.653a1.5 1.5 0 0 0-.054 2.785l5.84 2.533 3.46 5.934a1.5 1.5 0 0 0 2.68-.177l7.891-16.73a1.5 1.5 0 0 0 .004-1.57zM10.578 13.639l-.002.001-.002.001v-.003l.004.001zm1.12 1.928-.66-1.132 1.82-1.82a.75.75 0 1 0-1.06-1.06l-2.05 2.05-.802-1.377 9.44-5.08-6.688 6.419z" fill="url(#tgGold)"/>
+          </svg>
+        </div>
+        <h3>استشارة حصرية عبر تيليجرام</h3>
+        <p>عند اقتنائك للحقيبة، تحصل على استشارة مباشرة مع خبراء في القانون العقاري عبر مجموعة تيليجرام خاصة. اطرح أسئلتك، واحصل على إجابات شخصية، وتابع أحدث التحديثات القانونية — هذا الامتياز الحصري مضمّن مع طلبك بدون أي تكلفة إضافية.</p>
+        <span class="telegram-highlight">مشمول مع الطلب — استشارة بخبراء</span>
+      </div>
+    </div>
+
+    <!-- Block — Value‑Stack -->
+    <div class="block block-value-stack">
+      <div class="block-inner reveal">
+        <h2>قيمة ما تحصل عليه</h2>
+        <p class="v-sub">تفاصيل الأسعار الحقيقية — بدون تضخيم</p>
+        <div class="vs-card">
+          <div class="vs-row">
+            <span class="vs-label">💾 Flash Disk — فيديوهات وملفات رقمية</span>
+            <span class="vs-price">6,900 دج</span>
+          </div>
+          <div class="vs-row">
+            <span class="vs-label">📘 الدليل الشامل المطبوع</span>
+            <span class="vs-price">3,500 دج</span>
+          </div>
+          <div class="vs-subtotal">
+            لو اشتريتهما منفصلين: <span class="vs-amount">10,400 دج</span>
+          </div>
+          <div class="vs-bundle">
+            <div class="vs-bundle-label">احصل عليهما معًا الآن</div>
+            <div class="vs-bundle-price">بـ 7,900 دج فقط</div>
+          </div>
+          <div class="vs-bonus">
+            <div class="vs-bonus-item">متابعة مجانية على Telegram</div>
+            <div class="vs-bonus-item">توصيل مجاني إلى جميع الولايات</div>
+            <div class="vs-bonus-item">الدفع عند الاستلام</div>
+          </div>
+          <p class="vs-note">يمكنك أيضًا اقتناء كل منتج بشكل منفصل من الفورم أعلاه</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Block 9 — FAQ -->
+    <div class="block block-faq">
+      <div class="block-inner">
+        <h2 class="reveal">أسئلة شائعة</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-q">
+              <span>كيف سأستلم الطلب؟</span>
+              <span class="faq-arrow">▾</span>
+            </div>
+            <div class="faq-a">يتم التوصيل عبر شركة توصيل خاصة إلى باب منزلك في جميع ولايات الجزائر. مدة التوصيل من 3 إلى 7 أيام عمل حسب منطقتك.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">
+              <span>هل يمكن الدفع عند الاستلام؟</span>
+              <span class="faq-arrow">▾</span>
+            </div>
+            <div class="faq-a">نعم، الدفع عند الاستلام هو المتاح. تدفع الثمن كاملاً عند استلام حقيبتك — ولا تدفع أي شيء مسبقاً.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">
+              <span>ماذا تحتوي العلبة الذهبية تحديداً؟</span>
+              <span class="faq-arrow">▾</span>
+            </div>
+            <div class="faq-a">العلبة الذهبية هي فلاشة USB تحتوي على فيديوهات شرح تفصيلية، نماذج عقود قابلة للتعديل، وثائق مرجعية، وقوالب فحص جاهزة — كل المحتوى الرقمي الذي تحتاجه.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">
+              <span>هل تناسبني الحقيبة إذا كنت مبتدئاً؟</span>
+              <span class="faq-arrow">▾</span>
+            </div>
+            <div class="faq-a">بالتأكيد، الحقيبة صُمّمت خصيصاً للمبتدئين. كل شيء مُفسّر بعبارة واضحة مع أمثلة واقعية من السوق العقاري الجزائري. لا تحتاج أي خلفية قانونية مسبقة.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">
+              <span>هل هناك ضمان على المنتج؟</span>
+              <span class="faq-arrow">▾</span>
+            </div>
+            <div class="faq-a">بالطبع، جميع منتجاتنا مضمونة. إذا وصل المنتج تالفاً أو به عيب صناعي، سنستبدله فوراً بدون أي تكلفة إضافية.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Block 10 — Final CTA -->
+    <div class="block block-cta">
+      <div class="block-inner reveal">
+        <h2>ابدأ رحلتك نحو صفقتك العقارية الآمنة اليوم</h2>
+        <div class="urgency">⚡ الكمية محدودة — اغتنم الفرصة الآن</div>
+        <a href="#order-form" class="cta-btn">اطلب الآن</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ===== Global Floating CTA ===== -->
+  <a href="#order-form" class="global-cta" id="globalCta">
+    <span class="cta-inner">
+      <span class="g-icon">🛒</span>
+      <span>اطلب الآن</span>
+    </span>
+  </a>
+
+  <script>
+    // ---- Scroll-reveal animations ----
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // ---- FAQ Accordion ----
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+    // ---- Audience Tabs ----
+    document.querySelectorAll('.au-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const idx = tab.dataset.tab;
+        document.querySelectorAll('.au-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.au-panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.querySelector(`.au-panel[data-panel="${idx}"]`).classList.add('active');
+      });
+    });
+
+    // ---- Global Floating CTA ----
+    const globalCta = document.getElementById('globalCta');
+    const orderForm = document.getElementById('order-form');
+
+    const ctaObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        globalCta.classList.toggle('visible', !entry.isIntersecting);
+      });
+    }, { threshold: 0 });
+    ctaObserver.observe(orderForm);
+
+    globalCta.addEventListener('click', function(e) {
+      e.preventDefault();
+      orderForm.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // ================================================================
+    // TODO: ربط حقيقي لـ API شركة التوصيل بعد ربط شوبيفاي
+    // ================================================================
+
+    // ---- DATA ----
+    const PACKAGE_PRICES = { bundle: 7900, book: 3500, flash: 6900 };
+    const PACKAGE_LABELS = {
+      bundle: 'الباقة الكاملة (كتاب + Flash)',
+      book: 'الكتاب فقط',
+      flash: 'Flash Disk فقط'
+    };
+    let selectedPackage = 'bundle';
+
+    // TODO: استبدل جدول الأسعار هذا بربط API حقيقي لشركة التوصيل
+    const DELIVERY_PRICES = {
+      desk: { normal: 0, remote: 0 },
+      home: { normal: 0, remote: 0 }
+    };
+    // الولايات البعيدة (الجنوب)
+    const REMOTE_WILAYAS = [
+      'أدرار',
+      'تمنراست',
+      'إليزي',
+      'تندوف',
+      'تيميمون',
+      'برج باجي مختار',
+      'أولاد جلال',
+      'بني عباس',
+      'عين صالح',
+      'عين قزام',
+      'تقرت',
+      'جانت',
+      'المغير',
+      'المنيعة',
+      'عين وسارة',
+      'مسعد',
+      'الأبيض سيدي الشيخ',
+      'القنطرة',
+      'بئر العاتر',
+      'بشار',
+      'ورقلة',
+      'البيض',
+      'النعامة',
+      'غرداية',
+      'الجلفة',
+      'الأغواط',
+      'بسكرة',
+      'الوادي',
+      'تيارت'
+    ];
+
+    // ---- قائمة الولايات (69) ----
+    const WILAYAS = [
+      'أدرار',
+      'الشلف',
+      'الأغواط',
+      'أم البواقي',
+      'باتنة',
+      'بجاية',
+      'بسكرة',
+      'بشار',
+      'البليدة',
+      'البويرة',
+      'تمنراست',
+      'تبسة',
+      'تلمسان',
+      'تيارت',
+      'تيزي وزو',
+      'الجزائر',
+      'الجلفة',
+      'جيجل',
+      'سطيف',
+      'سعيدة',
+      'سكيكدة',
+      'سيدي بلعباس',
+      'عنابة',
+      'قالمة',
+      'قسنطينة',
+      'المدية',
+      'مستغانم',
+      'المسيلة',
+      'معسكر',
+      'ورقلة',
+      'وهران',
+      'البيض',
+      'إليزي',
+      'برج بوعريريج',
+      'بومرداس',
+      'الطارف',
+      'تندوف',
+      'تيسمسيلت',
+      'الوادي',
+      'خنشلة',
+      'سوق أهراس',
+      'تيبازة',
+      'ميلة',
+      'عين الدفلى',
+      'النعامة',
+      'عين تموشنت',
+      'غرداية',
+      'غليزان',
+      'تيميمون',
+      'برج باجي مختار',
+      'أولاد جلال',
+      'بني عباس',
+      'عين صالح',
+      'عين قزام',
+      'تقرت',
+      'جانت',
+      'المغير',
+      'المنيعة',
+      'أفلو',
+      'الأبيض سيدي الشيخ',
+      'العريشة',
+      'القنطرة',
+      'بريكة',
+      'بوسعادة',
+      'بير العاتر',
+      'قصر البخاري',
+      'قصر الشلالة',
+      'عين وسارة',
+      'مسعد'
+    ];
+
+    // ---- قائمة البلديات حسب الولاية ----
+    const COMMUNES = {
+      'أدرار': [
+        'تيمقتن',
+        'بودة',
+        'أولاد أحمد تيمي',
+        'أدرار',
+        'فنوغيل',
+        'إن زغمير',
+        'رقان',
+        'سالي',
+        'السبع',
+        'تسابيت',
+        'تامست',
+        'تامنطيط',
+        'تيت',
+        'زاوية كنتة',
+        'اقبلي',
+        'أولف'
+      ],
+      'الشلف': [
+        'تلعصة',
+        'الزبوجة',
+        'الحجاج',
+        'أولاد بن عبد القادر',
+        'عين مران',
+        'بريرة',
+        'أولاد عباس',
+        'وادي الفضة',
+        'بني راشد',
+        'الهرانفة',
+        'تاجنة',
+        'المرسى',
+        'الشلف',
+        'أم الدروع',
+        'سنجاس',
+        'سيدي عبد الرحمن',
+        'سيدي عكاشة',
+        'تنس',
+        'بني بوعتاب',
+        'الكريمية',
+        'حرشون',
+        'بوزغاية',
+        'تاوقريت',
+        'بني حواء',
+        'أبو الحسن',
+        'وادي قوسين',
+        'الشطية',
+        'مصدق',
+        'أولاد فارس',
+        'بوقادير',
+        'وادي سلي',
+        'الصبحة',
+        'بنايرية',
+        'الأبيض مجاجة',
+        'الظهرة'
+      ],
+      'الأغواط': [
+        'تاجموت',
+        'تاجرونة',
+        'الأغواط',
+        'قصر الحيران',
+        'العسافية',
+        'سيدي مخلوف',
+        'حاسي الدلاعة',
+        'حاسي الرمل',
+        'عين ماضي',
+        'الحويطة',
+        'الخنق',
+        'بن ناصر بن شهرة'
+      ],
+      'أم البواقي': [
+        'فكيرينة',
+        'الفجوج بوغرارة سعودي',
+        'عين فكرون',
+        'الرحية',
+        'مسكيانة',
+        'البلالة',
+        'بحير الشرقي',
+        'قصر الصباحي',
+        'سوق نعمان',
+        'أولاد زواي',
+        'أم البواقي',
+        'عين ببوش',
+        'عين الزيتون',
+        'بئر الشهداء',
+        'عين البيضاء',
+        'بريش',
+        'الزرق',
+        'عين مليلة',
+        'أولاد قاسم',
+        'أولاد حملة',
+        'العامرية',
+        'سيقوس',
+        'وادي نيني',
+        'عين الديس',
+        'الضلعة',
+        'الجازية',
+        'عين كرشة',
+        'الحرملية',
+        'هنشير تومغني'
+      ],
+      'باتنة': [
+        'معافة',
+        'القصبات',
+        'تيمقاد',
+        'تاكسلانت',
+        'أولاد سي سليمان',
+        'لمسان',
+        'تالخمت',
+        'رأس العيون',
+        'الرحبات',
+        'أولاد سلام',
+        'القيقبة',
+        'ثنية العابد',
+        'باتنة',
+        'فسديس',
+        'وادي الشعبة',
+        'حيدوسة',
+        'قصر بلزمة',
+        'مروانة',
+        'وادي الماء',
+        'لازرو',
+        'سريانة',
+        'زانة البيضاء',
+        'منعة',
+        'تغرغار',
+        'عين ياقوت',
+        'بومية',
+        'جرمة',
+        'المعذر',
+        'عيون العصافير',
+        'تازولت',
+        'بومقر',
+        'نقاوس',
+        'سفيان',
+        'أريس',
+        'تيغانمين',
+        'عين جاسر',
+        'الحاسي',
+        'فم الطوب',
+        'إشمول',
+        'إينوغيسن',
+        'بوزينة',
+        'لارباع',
+        'بولهيلات',
+        'الشمرة',
+        'غسيرة',
+        'كيمل',
+        'تكوت',
+        'عين التوتة',
+        'بني فضالة الحقانية',
+        'أولاد فاضل',
+        'أولاد عوف',
+        'شير',
+        'وادي الطاقة'
+      ],
+      'بجاية': [
+        'سيدي عياد',
+        'برباشة',
+        'الفلاي',
+        'كنديرة',
+        'سيدي عيش',
+        'تيفرة',
+        'تينبدار',
+        'القصر',
+        'فناية الماثن',
+        'توجة',
+        'ذراع القايد',
+        'خراطة',
+        'بجاية',
+        'وادي غير',
+        'بني معوش',
+        'بني جليل',
+        'فرعون',
+        'سمعون',
+        'تيمزريت',
+        'مالبو',
+        'سوق لإثنين',
+        'تامريجت',
+        'بوخليفة',
+        'تالة حمزة',
+        'تيشي',
+        'أيت رزين',
+        'إغيل علي',
+        'أيت إسماعيل',
+        'درقينة',
+        'تاسكريوت',
+        'أوقاس',
+        'تيزي نبربر',
+        'أدكار',
+        'بني كسيلة',
+        'تاوريرت إغيل',
+        'أقبو',
+        'شلاطة',
+        'اغرم',
+        'تامقرة',
+        'أمالو',
+        'بوحمزة',
+        'مسيسنة',
+        'صدوق',
+        'بني مليكش',
+        'بو جليل',
+        'تازمالت',
+        'أكفادو',
+        'شميني',
+        'سوق اوفلا',
+        'طيبان',
+        'أوزلاقن',
+        'أميزور'
+      ],
+      'بسكرة': [
+        'الفيض',
+        'ليشانة',
+        'بوشقرون',
+        'مخادمة',
+        'خنقة سيدي ناجي',
+        'زريبة الوادي',
+        'المزيرعة',
+        'بسكرة',
+        'الحاجب',
+        'مليلي',
+        'فوغالة',
+        'الغروس',
+        'برج بن عزوز',
+        'أورلال',
+        'أوماش',
+        'عين الناقة',
+        'شتمة',
+        'الحوش',
+        'سيدي عقبة',
+        'مشونش',
+        'ليوة',
+        'طولقة'
+      ],
+      'بشار': [
+        'بشار',
+        'بوكايس',
+        'لحمر',
+        'موغل',
+        'المريجة',
+        'تاغيت',
+        'العبادلة',
+        'عرق فراج',
+        'مشرع هواري بومدين',
+        'بني ونيف',
+        'تبلبالة',
+        'القنادسة'
+      ],
+      'البليدة': [
+        'بني مراد',
+        'اولاد سلامة',
+        'موزاية',
+        'حمام ملوان',
+        'بوقرة',
+        'صوحان',
+        'الأربعاء',
+        'الصومعة',
+        'قرواو',
+        'بوفاريك',
+        'مفتاح',
+        'الشفة',
+        'عين الرمانة',
+        'وادي جر',
+        'العفرون',
+        'أولاد يعيش',
+        'الشريعة',
+        'جبابرة',
+        'وادي العلايق',
+        'بن خليل',
+        'بني تامو',
+        'الشبلي',
+        'بوعينان',
+        'بوعرفة',
+        'البليدة'
+      ],
+      'البويرة': [
+        'عين العلوي',
+        'الحجرة الزرقاء',
+        'مزدور',
+        'تاقديت',
+        'ريدان',
+        'المعمورة',
+        'الحاكمية',
+        'أهل القصر',
+        'ديرة',
+        'الدشمية',
+        'بشلول',
+        'آث  منصور',
+        'سحاريج',
+        'العجيبة',
+        'الأسنام',
+        'أمشدالة',
+        'برج أوخريص',
+        'سور الغزلان',
+        'حنيف',
+        'شرفة',
+        'أولاد راشد',
+        'عين الحجر',
+        'أغبالو',
+        'روراوة',
+        'الخبوزية',
+        'بئر غبالو',
+        'البويرة',
+        'عين الترك',
+        'أيت لعزيز',
+        'عين بسام',
+        'المقراني',
+        'سوق الخميس',
+        'أعمر',
+        'جباحية',
+        'الهاشمية',
+        'حيزر',
+        'تاغزوت',
+        'بودربالة',
+        'بوكرم',
+        'قرومة',
+        'الأخضرية',
+        'معلة',
+        'قادرية',
+        'زبربر',
+        'وادي البردي'
+      ],
+      'تمنراست': [
+        'تاظروك',
+        'ابلسة',
+        'تمنراست',
+        'عين امقل',
+        'أدلس'
+      ],
+      'تبسة': [
+        'الحويجبات',
+        'العوينات',
+        'بئر مقدم',
+        'بئر الذهب',
+        'صفصاف الوسرى',
+        'قريقر',
+        'بكارية',
+        'بولحاف الدير',
+        'أم علي',
+        'بوخضرة',
+        'الماء الابيض',
+        'الونزة',
+        'المريج',
+        'عين الزرقاء',
+        'سطح قنطيس',
+        'العقلة',
+        'المزرعة',
+        'بجن',
+        'مرسط',
+        'ثليجان',
+        'الشريعة',
+        'تبسة',
+        'الحمامات',
+        'الكويف'
+      ],
+      'تلمسان': [
+        'باب العسة',
+        'تيرني بني هديل',
+        'منصورة',
+        'بني مستر',
+        'عين غرابة',
+        'شتوان',
+        'عمير',
+        'عين فزة',
+        'هنين',
+        'بني خلاد',
+        'ندرومة',
+        'مسيردة الفواقة',
+        'مرسى بن مهيدي',
+        'سيدي مجاهد',
+        'بني بوسعيد',
+        'سبدو',
+        'بوحلو',
+        'مغنية',
+        'حمام بوغرارة',
+        'زناتة',
+        'أولاد رياح',
+        'الحناية',
+        'سيدي العبدلي',
+        'سوق الثلاثاء',
+        'بن سكران',
+        'فلاوسن',
+        'عين الكبيرة',
+        'عين فتاح',
+        'تلمسان',
+        'عين النحالة',
+        'عين تالوت',
+        'عين يوسف',
+        'بني وارسوس',
+        'الفحول',
+        'الرمشي',
+        'سبعة شيوخ',
+        'السواني',
+        'صبرة',
+        'دار يغمراسن',
+        'الغزوات',
+        'السواحلية',
+        'تيانت',
+        'بني صميل',
+        'وادي الخضر',
+        'أولاد ميمون',
+        'بني بهدل',
+        'بني سنوس',
+        'العزايل',
+        'جبالة'
+      ],
+      'تيارت': [
+        'مهدية',
+        'عين دزاريت',
+        'السبعين',
+        'الفايجة',
+        'سي عبد الغني',
+        'السوقر',
+        'توسنينة',
+        'مغيلة',
+        'السبت',
+        'سيدي حسني',
+        'عين الحديد',
+        'فرندة',
+        'تخمرت',
+        'عين كرمس',
+        'جبيلات الرصفاء',
+        'مادنة',
+        'مدريسة',
+        'سيدي عبد الرحمن',
+        'قرطوفة',
+        'وادي ليلي',
+        'سيدي علي ملال',
+        'جيلالي بن عمار',
+        'مشرع الصفا',
+        'تاقدمت',
+        'تيدة',
+        'الناظورة',
+        'تيارت',
+        'مدروسة',
+        'ملاكو',
+        'سيدي بختي',
+        'عين الذهب',
+        'شحيمة',
+        'النعيمة',
+        'عين بوشقيف',
+        'دحموني',
+        'الرحوية'
+      ],
+      'تيزي وزو': [
+        'ميزرانـــة',
+        'إيجــار',
+        'بني دوالة',
+        'بني زيكــي',
+        'إيلولة أومـــالو',
+        'أقني قغران',
+        'أيت بــوادو',
+        'واضية',
+        'تيزي نثلاثة',
+        'أغريب',
+        'أيت شافع',
+        'أقرو',
+        'أزفون',
+        'إفليـــسن',
+        'تيقـزيرت',
+        'أسي يوسف',
+        'بوغني',
+        'بونوح',
+        'مشطراس',
+        'ذراع بن خدة',
+        'سيدي نعمان',
+        'تادمايت',
+        'تيرمتين',
+        'أيت بومهدي',
+        'أيت تودرت',
+        'بني عيسي',
+        'واسيف',
+        'أيت خليلي',
+        'مقــلع',
+        'صوامـــع',
+        'بني يني',
+        'إبودرارن',
+        'تيزي وزو',
+        'أبي يوسف',
+        'عين الحمام',
+        'أيت يحيى',
+        'اقبيل',
+        'بوجيمة',
+        'ماكودة',
+        'عين الزاوية',
+        'أيت يحي موسى',
+        'ذراع الميزان',
+        'فريقات',
+        'مكيرة',
+        'تيزي غنيف',
+        'يطــافن',
+        'إيلـيــلتـن',
+        'إمســوحال',
+        'عزازقة',
+        'فريحة',
+        'إيفيغاء',
+        'إعــكورن',
+        'زكري',
+        'أيت عقـواشة',
+        'إيرجـــن',
+        'الأربعــاء ناث إيراثن',
+        'أيت  أومالو',
+        'تيزي راشد',
+        'أيت عيسى ميمون',
+        'واقنون',
+        'تيمـيزار',
+        'معـــاتقة',
+        'سوق الإثنين',
+        'أيت محمود',
+        'بنــــي زمنزار',
+        'إفــرحــونان',
+        'بوزقــن'
+      ],
+      'الجزائر': [
+        'حسين داي',
+        'الكاليتوس',
+        'سيدي موسى',
+        'القبة',
+        'محمد بلوزداد',
+        'عين طاية',
+        'باب الزوار',
+        'برج الكيفان',
+        'الدار البيضاء',
+        'المرسى',
+        'المحمدية',
+        'بئر توتة',
+        'اولاد شبل',
+        'تسالة المرجة',
+        'هراوة',
+        'رغاية',
+        'الرويبة',
+        'المعالمة',
+        'الرحمانية',
+        'سويدانية',
+        'سطاوالي',
+        'زرالدة',
+        'بابا حسن',
+        'الدويرة',
+        'الدرارية',
+        'العاشور',
+        'الخرايسية',
+        'عين بنيان',
+        'الشراقة',
+        'دالي ابراهيم',
+        'الحمامات',
+        'اولاد فايت',
+        'الجزائر الوسطى',
+        'المدنية',
+        'المرادية',
+        'سيدي امحمد',
+        'السحاولة',
+        'بولوغين بن زيري',
+        'القصبة',
+        'وادي قريش',
+        'الرايس حميدو',
+        'بئر مراد رايس',
+        'بئر خادم',
+        'جسر قسنطينة',
+        'حيدرة',
+        'المغارية',
+        'ابن عكنون',
+        'بني مسوس',
+        'بوزريعة',
+        'الابيار',
+        'باش جراح',
+        'بوروبة',
+        'الحراش',
+        'وادي السمار',
+        'براقي',
+        'برج البحري',
+        'باب الوادي'
+      ],
+      'الجلفة': [
+        'حاسي العش',
+        'عين الإبل',
+        'القديد',
+        'الشارف',
+        'بن يعقوب',
+        'سيدي بايزيد',
+        'مليليحة',
+        'دار الشيوخ',
+        'تعظميت',
+        'زكار',
+        'دويس',
+        'الادريسية',
+        'عين الشهداء',
+        'الجلفة',
+        'زعفران',
+        'عين معبد',
+        'حاسي بحبح',
+        'مجبارة'
+      ],
+      'جيجل': [
+        'جيجل',
+        'العوانة',
+        'سلمى بن زيادة',
+        'أراقن سويسي',
+        'بوسيف أولاد عسكر',
+        'زيامة منصورية',
+        'الشحنة',
+        'الامير عبد القادر',
+        'وجانة',
+        'الطاهير',
+        'الشقفة',
+        'القنار نشفي',
+        'سيدي عبد العزيز',
+        'الميلية',
+        'أولاد يحيى خدروش',
+        'أولاد رابح',
+        'سيدي معروف',
+        'غبالة',
+        'السطارة',
+        'بوراوي بلهادف',
+        'العنصر',
+        'خيري واد عجول',
+        'جيملة',
+        'قاوس',
+        'تاكسنة',
+        'برج الطهر',
+        'بودريعة بني  ياجيس',
+        'الجمعة بني حبيبي'
+      ],
+      'سطيف': [
+        'الرصفة',
+        'واد البارد',
+        'تيزي نبشار',
+        'مزلوق',
+        'قلال',
+        'قصر الابطال',
+        'أولاد سي أحمد',
+        'أيت نوال مزادة',
+        'ايت تيزي',
+        'بوعنداس',
+        'بوسلام',
+        'حمام السخنة',
+        'الطاية',
+        'التلة',
+        'عين ولمان',
+        'بوطالب',
+        'الحامة',
+        'أولاد تبان',
+        'عموشة',
+        'صالح باي',
+        'عين أزال',
+        'عين الحجر',
+        'بيضاء برج',
+        'بئر حدادة',
+        'قنزات',
+        'حربيل',
+        'عين الروى',
+        'بني وسين',
+        'أوريسيا',
+        'بوقاعة',
+        'ذراع قبيلة',
+        'حمام قرقور',
+        'سطيف',
+        'عين الكبيرة',
+        'الدهامشة',
+        'أولاد عدوان',
+        'عين السبت',
+        'بني عزيز',
+        'معاوية',
+        'بلاعة',
+        'بئر العرش',
+        'الولجة',
+        'تاشودة',
+        'تالة إيفاسن',
+        'سرج الغول',
+        'قجال',
+        'أولاد صابر',
+        'بازر سكرة',
+        'العلمة',
+        'قلتة زرقاء',
+        'بني فودة',
+        'جميلة',
+        'عين لقراج',
+        'بني شبانة',
+        'بني ورتيلان',
+        'بني موحلي',
+        'عين عباسة',
+        'عين أرنات',
+        'بابور',
+        'ماوكلان'
+      ],
+      'سعيدة': [
+        'سعيدة',
+        'تيرسين',
+        'أولاد إبراهيم',
+        'عين السلطان',
+        'المعمورة',
+        'الحساسنة',
+        'عين السخونة',
+        'سيدي بوبكر',
+        'أولاد خالد',
+        'هونت',
+        'يوب',
+        'دوي ثابت',
+        'سيدي احمد',
+        'مولاي العربي',
+        'عين الحجر',
+        'سيدي عمر'
+      ],
+      'سكيكدة': [
+        'عين بوزيان',
+        'صالح بو الشعور',
+        'الحدائق',
+        'زردازة',
+        'أولاد حبابة',
+        'بني ولبان',
+        'سيدي مزغيش',
+        'بني بشير',
+        'رمضان جمال',
+        'بين الويدان',
+        'مجاز الدشيش',
+        'تمالوس',
+        'عين قشرة',
+        'الولجة بولبلوط',
+        'أم الطوب',
+        'الغدير',
+        'الكركرة',
+        'الحروش',
+        'الزيتونة',
+        'أولاد عطية',
+        'وادي الزهور',
+        'القل',
+        'الشرايع',
+        'بني زيد',
+        'خناق مايو',
+        'المرسى',
+        'بن عزوز',
+        'بكوش لخضر',
+        'السبت',
+        'عين شرشار',
+        'عزابة',
+        'بوشطاطة',
+        'فلفلة',
+        'حمادي كرومة',
+        'سكيكدة',
+        'عين زويت',
+        'جندل سعدي محمد',
+        'قنواع'
+      ],
+      'سيدي بلعباس': [
+        'سيدي علي بن يوب',
+        'مولاي سليسن',
+        'الحصيبة',
+        'عين تندمين',
+        'تنيرة',
+        'وادي سفيون',
+        'حاسي دحو',
+        'وادي تاوريرة',
+        'بن عشيبة شلية',
+        'سيدي يعقوب',
+        'سيدي لحسن',
+        'سيدي خالد',
+        'طابية',
+        'سيدي ابراهيم',
+        'العمارنة',
+        'بوخنفيس',
+        'حاسي زهانة',
+        'شيطوان البلايلة',
+        'بن باديس',
+        'بضرابين المقراني',
+        'سفيزف',
+        'مسيد',
+        'بوجبهة البرج',
+        'عين أدن',
+        'سيدي حمادوش',
+        'سيدي شعيب',
+        'مكدرة',
+        'عين البرد',
+        'رجم دموش',
+        'راس الماء',
+        'وادي السبع',
+        'مرحوم',
+        'سيدي بلعباس',
+        'عين الثريد',
+        'السهالة الثورة',
+        'تسالة',
+        'بلعربي',
+        'مصطفى بن ابراهيم',
+        'تلموني',
+        'زروالة',
+        'الضاية',
+        'مزاورو',
+        'تغاليمت',
+        'تلاغ',
+        'عين قادة',
+        'لمطار',
+        'سيدي علي بوسيدي',
+        'سيدي دحو الزاير',
+        'بئر الحمام',
+        'مرين',
+        'تفسور',
+        'تاودموت'
+      ],
+      'عنابة': [
+        'عنابة',
+        'سرايدي',
+        'برحال',
+        'واد العنب',
+        'الحجار',
+        'سيدي عمار',
+        'البوني',
+        'عين الباردة',
+        'الشرفة',
+        'العلمة',
+        'التريعات',
+        'شطايبي'
+      ],
+      'قالمة': [
+        'نشماية',
+        'بوحمدان',
+        'حمام دباغ',
+        'الركنية',
+        'الدهوارة',
+        'حمام النبايل',
+        'قالمة',
+        'بومهرة أحمد',
+        'عين بن بيضاء',
+        'بوشقوف',
+        'مجاز الصفاء',
+        'وادي فراغة',
+        'بوعاتي محمود',
+        'الفجوج',
+        'هيليوبوليس',
+        'مجاز عمار',
+        'هواري بومدين',
+        'رأس العقبة',
+        'سلاوة عنونة',
+        'جبالة الخميسي',
+        'برج صباط',
+        'وادي الزناتي',
+        'عين رقادة',
+        'عين العربي',
+        'عين مخلوف',
+        'تاملوكة',
+        'عين صندل',
+        'بوحشانة',
+        'لخزارة',
+        'بلخير',
+        'بني مزلين',
+        'قلعة بوصبع',
+        'وادي الشحم',
+        'بن جراح'
+      ],
+      'قسنطينة': [
+        'ديدوش مراد',
+        'حامة بوزيان',
+        'بني حميدان',
+        'زيغود يوسف',
+        'عين السمارة',
+        'الخروب',
+        'أولاد رحمون',
+        'عين عبيد',
+        'أبن باديس الهرية',
+        'ابن زياد',
+        'بوجريو مسعود',
+        'قسنطينة'
+      ],
+      'المدية': [
+        'السواقي',
+        'العزيزية',
+        'مغراوة',
+        'ميهوب',
+        'حناشة',
+        'عوامري',
+        'وادي حربيل',
+        'بني سليمان',
+        'بوعيشون',
+        'أولاد بوعشرة',
+        'سي المحجوب',
+        'بوسكن',
+        'سيدي الربيع',
+        'البرواقية',
+        'أولاد دايد',
+        'الربعية',
+        'مجبر',
+        'ثلاث دوائر',
+        'الزبيرية',
+        'العيساوية',
+        'الحوضان',
+        'مزغنة',
+        'تابلاط',
+        'سغوان',
+        'ذراع السمار',
+        'المدية',
+        'تمسقيدة',
+        'بن شكاو',
+        'الحمدانية',
+        'وزرة',
+        'تيزي مهدي',
+        'بعطة',
+        'العمارية',
+        'أولاد إبراهيم',
+        'بئر بن عابد',
+        'القلب الكبير',
+        'سدراية',
+        'بوشراحيل',
+        'خمس جوامع',
+        'سيدي نعمان',
+        'جواب',
+        'سيدي زهار',
+        'سيدي زيان'
+      ],
+      'مستغانم': [
+        'فرناقة',
+        'وادي الخير',
+        'الحسيان (بني ياحي',
+        'حاسي ماماش',
+        'مزغران',
+        'ستيدية',
+        'عين تادلس',
+        'سيدي بلعطار',
+        'سور',
+        'عين بودينار',
+        'خير الدين',
+        'صيادة',
+        'سيدي علي',
+        'تزقايت',
+        'بن عبد المالك رمضان',
+        'مستغانم',
+        'حجاج',
+        'سيدي لخضر',
+        'عشعاشة',
+        'خضرة',
+        'نكمارية',
+        'أولاد بوغالم',
+        'بوقيراط',
+        'صفصاف',
+        'سيرات',
+        'السوافلية',
+        'عين سيدي الشريف',
+        'منصورة',
+        'ماسرة',
+        'الطواهرية',
+        'عين نويسي',
+        'أولاد مع الله'
+      ],
+      'المسيلة': [
+        'شلال',
+        'أولاد ماضي',
+        'خطوطي سد الجير',
+        'بلعايبة',
+        'برهوم',
+        'دهاهنة',
+        'مقرة',
+        'بني يلمان',
+        'بوطي السايح',
+        'سيدي عيسى',
+        'عين الحجل',
+        'جبل مساعد',
+        'المسيلة',
+        'حمام الضلعة',
+        'ونوغة',
+        'أولاد منصور',
+        'تارمونت',
+        'أولاد دراج',
+        'السوامع',
+        'الحوامد',
+        'خبانة',
+        'مسيف',
+        'عين الخضراء',
+        'أولاد عدي لقبالة'
+      ],
+      'معسكر': [
+        'وادي الأبطال',
+        'سيدي عبد المومن',
+        'سجرارة',
+        'المحمدية',
+        'تيغنيف',
+        'مقطع الدوز',
+        'فراقيق',
+        'الغمري',
+        'زهانة',
+        'القعدة',
+        'رأس عين عميروش',
+        'عقاز',
+        'العلايمية',
+        'سيق',
+        'الشرفاء',
+        'بوهني',
+        'المأمونية',
+        'القطنة',
+        'عين فارس',
+        'غروس',
+        'بنيان',
+        'عوف',
+        'قرجوم',
+        'عين أفرص',
+        'عين فكان',
+        'خلوية',
+        'المنور',
+        'البرج',
+        'سيدي بوسعيد',
+        'المطمور',
+        'سيدي قادة',
+        'ماقضة',
+        'معسكر',
+        'بوحنيفية',
+        'غريس',
+        'حسين',
+        'القرط',
+        'فروحة',
+        'تيزي',
+        'السهايلية',
+        'ماوسة',
+        'سيدي عبد الجبار',
+        'الحشم',
+        'نسمط',
+        'زلامطة',
+        'عين فراح',
+        'وادي التاغية'
+      ],
+      'ورقلة': [
+        'ورقلة',
+        'حاسي مسعود',
+        'عين البيضاء',
+        'حاسي بن عبد الله',
+        'سيدي خويلد',
+        'البرمة',
+        'الرويسات',
+        'انقوسة'
+      ],
+      'وهران': [
+        'سيدي الشحمي',
+        'حاسي مفسوخ',
+        'بئر الجير',
+        'حاسي بن عقبة',
+        'قديل',
+        'حاسي بونيف',
+        'الكرمة',
+        'السانية',
+        'بن فريحة',
+        'أرزيو',
+        'سيدي بن يبقى',
+        'عين البية',
+        'بطيوة',
+        'مرسى الحجاج',
+        'عين الترك',
+        'وهران',
+        'العنصر',
+        'المرسى الكبير',
+        'بوفاتيس',
+        'البراية',
+        'وادي تليلات',
+        'عين الكرمة',
+        'بوتليليس',
+        'مسرغين',
+        'بوسفر',
+        'طفراوي'
+      ],
+      'البيض': [
+        'عين العراك',
+        'كراكدة',
+        'سيدي سليمان',
+        'سيدي عامر',
+        'بوعلام',
+        'البنود',
+        'بوقطب',
+        'الخيثر',
+        'توسمولين',
+        'سيدي طيفور',
+        'ستيتن',
+        'البيض',
+        'رقاصة',
+        'المحرة',
+        'الكاف الأحمر'
+      ],
+      'إليزي': [
+        'برج عمر إدريس',
+        'دبداب',
+        'إن أمناس',
+        'إيليزي'
+      ],
+      'برج بوعريريج': [
+        'الحمادية',
+        'أولاد سيدي ابراهيم',
+        'عين تاغروت',
+        'تيكستار',
+        'بليمور',
+        'العناصر',
+        'غيلاسة',
+        'تقلعيت',
+        'برج الغدير',
+        'العش',
+        'سيدي أمبارك',
+        'خليل',
+        'بئر قاصد علي',
+        'تفرق',
+        'الماين',
+        'جعافرة',
+        'القلة',
+        'ثنية النصر',
+        'المهير',
+        'القصور',
+        'المنصورة',
+        'حرازة',
+        'الرابطة',
+        'الياشير',
+        'حسناوة',
+        'مجانة',
+        'عين تسرة',
+        'أولاد أبراهم',
+        'رأس الوادي',
+        'برج زمورة',
+        'أولاد دحمان',
+        'تسامرت',
+        'برج بوعريرج',
+        'بن داود'
+      ],
+      'بومرداس': [
+        'الخروبة',
+        'دلس',
+        'بن شود',
+        'أعفير',
+        'الثنية',
+        'بني عمران',
+        'خميس الخشنة',
+        'عمال',
+        'تيمزريت',
+        'زموري',
+        'الاربعطاش',
+        'يسر',
+        'شعبة العامر',
+        'أولاد عيسى',
+        'الناصرية',
+        'بوزقزة قدارة',
+        'سوق الحد',
+        'سيدي داود',
+        'بغلية',
+        'لقاطة',
+        'جنات',
+        'تيجلابين',
+        'سي مصطفى',
+        'أولاد هداج',
+        'أولاد موسى',
+        'بومرداس',
+        'قورصو',
+        'برج منايل',
+        'بودواو',
+        'بودواو البحري',
+        'تاورقة',
+        'حمادي'
+      ],
+      'الطارف': [
+        'عين العسل',
+        'بوقوس',
+        'الطارف',
+        'الزيتونة',
+        'البسباس',
+        'عين الكرمة',
+        'بوحجار',
+        'حمام بني صالح',
+        'وادي الزيتون',
+        'بن مهيدي',
+        'بريحان',
+        'شبيطة مختار',
+        'الشط',
+        'العيون',
+        'القالة',
+        'السوارخ',
+        'زريزر',
+        'بوثلجة',
+        'الشافية',
+        'بحيرة الطيور',
+        'شحاني',
+        'رمل السوق',
+        'عصفور',
+        'الذرعـان'
+      ],
+      'تندوف': [
+        'تندوف',
+        'أم العسل'
+      ],
+      'تيسمسيلت': [
+        'خميستي',
+        'ثنية الاحد',
+        'أولاد بسام',
+        'سيدي بوتوشنت',
+        'تيسمسيلت',
+        'سيدي العنتري',
+        'بني شعيب',
+        'بني لحسن',
+        'سيدي عابد',
+        'سيدي سليمان',
+        'بوقائد',
+        'الأربعاء',
+        'الأزهرية',
+        'لرجام',
+        'الملعب',
+        'العيون',
+        'تملاحت',
+        'اليوسفية',
+        'برج الأمير عبد القادر',
+        'عماري',
+        'المعاصم',
+        'برج بونعامة'
+      ],
+      'الوادي': [
+        'دوار الماء',
+        'العقلة',
+        'المقرن',
+        'سيدي عون',
+        'اميه وانسة',
+        'كوينين',
+        'البياضة',
+        'النخلة',
+        'الرباح',
+        'قمار',
+        'بن  قشة',
+        'ورماس',
+        'تغزوت',
+        'الحمراية',
+        'الرقيبة',
+        'الدبيلة',
+        'حساني عبد الكريم',
+        'حاسي خليفة',
+        'الطريفاوي',
+        'الطالب العربي',
+        'وادي العلندة',
+        'الوادي'
+      ],
+      'خنشلة': [
+        'خيران',
+        'بابار',
+        'المحمل',
+        'أولاد رشاش',
+        'جلال',
+        'يابوس',
+        'خنشلة',
+        'قايس',
+        'شلية',
+        'الرميلة',
+        'تاوزيانت',
+        'بغاي',
+        'الحامة',
+        'انسيغة',
+        'طامزة',
+        'عين الطويلة',
+        'متوسة',
+        'بوحمامة',
+        'الولجة',
+        'مصارة',
+        'ششار'
+      ],
+      'سوق أهراس': [
+        'سوق أهراس',
+        'عين سلطان',
+        'سدراتة',
+        'الحنانشة',
+        'المشروحة',
+        'عين الزانة',
+        'أولاد إدريس',
+        'ترقالت',
+        'أم العظايم',
+        'وادي الكبريت',
+        'تيفاش',
+        'الراقوبة',
+        'الدريعة',
+        'تاورة',
+        'الزعرورية',
+        'الحدادة',
+        'الخضارة',
+        'أولاد مومن',
+        'المراهنة',
+        'ويلان',
+        'سيدي فرج',
+        'بئر بوحوش',
+        'سافل الويدان',
+        'خميسة',
+        'مداوروش',
+        'الزوابي'
+      ],
+      'تيبازة': [
+        'حجوط',
+        'مراد',
+        'مناصر',
+        'أغبال',
+        'الناظور',
+        'سيدي عامر',
+        'قوراية',
+        'مسلمون',
+        'شرشال',
+        'حجرة النص',
+        'سيدي غيلاس',
+        'الداموس',
+        'الأرهاط',
+        'فوكة',
+        'عين تاقورايت',
+        'بوهارون',
+        'بواسماعيل',
+        'خميستي',
+        'أحمر العين',
+        'بورقيقة',
+        'دواودة',
+        'سيدي راشد',
+        'الحطاطبة',
+        'الشعيبة',
+        'القليعة',
+        'سيدي سميان',
+        'تيبازة',
+        'بني ميلك'
+      ],
+      'ميلة': [
+        'مشيرة',
+        'العياضي برباس',
+        ' عين البيضاء أحريش',
+        'تسالة لمطاعي',
+        'ترعي باينان',
+        'اعميرة اراس',
+        'تسدان حدادة',
+        'مينار زارزة',
+        'سيدي مروان',
+        'الشيقارة',
+        'حمالة',
+        'القرارم قوقة',
+        'تيبرقنت',
+        'الرواشد',
+        'دراحي بوصلاح',
+        'زغاية',
+        'وادي النجاء',
+        'أحمد راشدي',
+        'تاجنانت',
+        'عين الملوك',
+        'أولاد اخلوف',
+        'بن يحي عبد الرحمن',
+        'التلاغمة',
+        'وادي سقان',
+        'وادي العثمانية',
+        'عين التين',
+        'شلغوم العيد',
+        'يحي بني قشة',
+        'فرجيوة',
+        'سيدي خليفة',
+        'ميلة',
+        'بوحاتم'
+      ],
+      'عين الدفلى': [
+        'خميس مليانة',
+        'سيدي الأخضر',
+        'عين البنيان',
+        'عين التركي',
+        'حمام ريغة',
+        'بوراشد',
+        'الحسينية',
+        'جليدة',
+        'عريب',
+        'جمعة أولاد الشيخ',
+        'العامرة',
+        'العطاف',
+        'تبركانين',
+        'عين بويحيى',
+        'العبادية',
+        'تاشتة زقاغة',
+        'بربوش',
+        'جندل',
+        'بن علال',
+        'وادي الشرفاء',
+        'بومدفع',
+        'عين الاشياخ',
+        'عين السلطان',
+        'واد الجمعة',
+        'الماين',
+        'الروينة',
+        'زدين',
+        'بئر ولد خليفة',
+        'برج الأمير خالد',
+        'طارق بن زياد',
+        'بطحية',
+        'بلعاص',
+        'الحسانية',
+        'عين الدفلى',
+        'مليانة',
+        'المخاطرية'
+      ],
+      'النعامة': [
+        'تيوت',
+        'مغرار',
+        'عسلة',
+        'القصدير',
+        'مكمن بن عمار',
+        'عين الصفراء',
+        'المشرية',
+        'البيوض',
+        'عين بن خليل',
+        'النعامة',
+        'جنين بورزق',
+        'سفيسيفة'
+      ],
+      'عين تموشنت': [
+        'سيدي بومدين',
+        'تامزورة',
+        'شعبة اللحم',
+        'المالح',
+        'أولاد الكيحل',
+        'شنتوف',
+        'تارقة',
+        'وادي الصباح',
+        'العامرية',
+        'حاسي الغلة',
+        'أولاد بوجمعة',
+        'أغلال',
+        'عين الكيحل',
+        'عين الطلبة',
+        'عقب الليل',
+        'بني صاف',
+        'الحساسنة',
+        'الأمير عبد القادر',
+        'سيدي صافي',
+        'ولهاصة الغرابة',
+        'سيدي ورياش',
+        'عين الأربعاء',
+        'المساعيد',
+        'وادي برقش',
+        'سيدي بن عدة',
+        'عين تموشنت',
+        'بوزجار',
+        'حمام بوحجر'
+      ],
+      'غرداية': [
+        'ضاية بن ضحوة',
+        'المنصورة',
+        'العطف',
+        'بونورة',
+        'زلفانة',
+        'القرارة',
+        'سبسب',
+        'متليلي',
+        'بريان',
+        'غرداية'
+      ],
+      'غليزان': [
+        'القطار',
+        'أولاد يعيش',
+        'بني درقن',
+        'دار بن عبد الله',
+        'زمورة',
+        'جديوية',
+        'حمري',
+        'بلعسل بوزقزة',
+        'المطمر',
+        'سيدي  خطاب',
+        'سيدي امحمد بن عودة',
+        'عين طارق',
+        'حد الشكالة',
+        'الولجة',
+        'مازونة',
+        'عين الرحمة',
+        'القلعة',
+        'سيدي سعادة',
+        'يلل',
+        'سوق الحد',
+        'منداس',
+        'وادي السلام',
+        'سيدي لزرق',
+        'عمي موسى',
+        'واريزان',
+        'مرجة سيدي عابد',
+        'أولاد سيدي الميهوب',
+        'بن داود',
+        'وادي رهيو',
+        'الحاسي',
+        'سيدي أمحمد بن علي',
+        'مديونة',
+        'بني زنطيس',
+        'وادي الجمعة',
+        'لحلاف',
+        'غليزان',
+        'الحمادنة',
+        'الرمكة'
+      ],
+      'تيميمون': [
+        'تنركوك',
+        'تيميمون',
+        'أولاد السعيد',
+        'المطارفة',
+        'طالمين',
+        'أولاد عيسى',
+        'شروين',
+        'أوقروت',
+        'دلدول',
+        'قصر قدور'
+      ],
+      'برج باجي مختار': [
+        'تيمياوين',
+        'برج باجي مختار'
+      ],
+      'أولاد جلال': [
+        'رأس الميعاد',
+        'بسباس',
+        'سيدي  خالد',
+        'الدوسن',
+        'الشعيبة',
+        'أولاد جلال'
+      ],
+      'بني عباس': [
+        'بني عباس',
+        'تامترت',
+        'إقلي',
+        'الواتة',
+        'أولاد خضير',
+        'كرزاز',
+        'تيمودي',
+        'القصابي',
+        'بن يخلف'
+      ],
+      'عين صالح': [
+        'إينغر',
+        'عين صالح',
+        'فقارة الزوى'
+      ],
+      'عين قزام': [
+        'تين زواتين',
+        'عين قزام'
+      ],
+      'تقرت': [
+        'تماسين',
+        'سيدي سليمان',
+        'المقارين',
+        'النزلة',
+        'بلدة اعمر',
+        'تبسبست',
+        'تقرت',
+        'الطيبات',
+        'العالية',
+        'الحجيرة',
+        'بن ناصر',
+        'المنقر',
+        'الزاوية العابدية'
+      ],
+      'جانت': [
+        'جانت',
+        'برج الحواس'
+      ],
+      'المغير': [
+        'أم الطيور',
+        'سيدي عمران',
+        'المرارة',
+        'جامعة',
+        'تندلة',
+        'المغير',
+        'سطيل',
+        'سيدي خليل'
+      ],
+      'المنيعة': [
+        'المنيعة',
+        'حاسي القارة',
+        'حاسي الفحل'
+      ],
+      'أفلو': [
+        'البيضاء',
+        'قلتة سيدي سعد',
+        'بريدة',
+        'عين سيدي علي',
+        'الحاج مشري',
+        'تاويالة',
+        'الغيشة',
+        'سبقاق',
+        'سيدي بوزيد',
+        'وادي مرة',
+        'وادي مزي',
+        'أفلو'
+      ],
+      'الأبيض سيدي الشيخ': [
+        'بريزينة',
+        'الغاسول',
+        'الأبيض سيدي الشيخ',
+        'بوسمغون',
+        'الشقيق',
+        'شلالة',
+        'اربوات'
+      ],
+      'العريشة': [
+        'سيدي الجيلالي',
+        'البويهي',
+        'القور',
+        'العريشة'
+      ],
+      'القنطرة': [
+        'جمورة',
+        'برانيس',
+        'الوطاية',
+        'القنطرة',
+        'عين زعطوط'
+      ],
+      'بريكة': [
+        'سقانة',
+        'تيلاطو',
+        'بريكة',
+        'بيطام',
+        'إمدوكل',
+        'عزيل عبد القادر',
+        'الجزار',
+        'أولاد عمار'
+      ],
+      'بوسعادة': [
+        'سيدي هجرس',
+        'بوسعادة',
+        'الهامل',
+        'ولتام',
+        'بن زوه',
+        'أولاد سيدي ابراهيم',
+        'سيدي عامر',
+        'تامسة',
+        'بن سرور',
+        'محمد بوضياف',
+        'أولاد سليمان',
+        'زرزور',
+        'عين الملح',
+        'عين فارس',
+        'عين الريش',
+        'بئر فضة',
+        'سيدي امحمد',
+        'امجدل',
+        'مناعة',
+        'سليم',
+        'المعاضيد',
+        'المطارفة',
+        'معاريف'
+      ],
+      'بير العاتر': [
+        'فركان',
+        'نقرين',
+        'العقلة المالحة',
+        'بئر العاتر'
+      ],
+      'قصر البخاري': [
+        'أولاد هلال',
+        'قصر البخاري',
+        'مفاتحة',
+        'السانق',
+        'بوعيش',
+        'بوغزول',
+        'الشهبونية',
+        'بوغار',
+        'عين بوسيف',
+        'العوينات',
+        'الكاف الاخضر',
+        'أولاد امعرف',
+        'سيدي دامد',
+        'عين اقصير',
+        'شلالة العذاورة',
+        'شنيقل',
+        'تفراوت',
+        'عزيز',
+        'دراق',
+        'أم الجليل',
+        'أولاد عنتر'
+      ],
+      'قصر الشلالة': [
+        'قصر الشلالة',
+        'سرغين',
+        'زمالة  الأمير عبد القادر',
+        'بوقرة',
+        'حمادية',
+        'الرشايقة'
+      ],
+      'عين وسارة': [
+        'حد الصحاري',
+        'بويرة الأحداب',
+        'عين فقه',
+        'سيدي لعجال',
+        'حاسي فدول',
+        'الخميس',
+        'بيرين',
+        'قرنيني',
+        'عين وسارة',
+        'بنهار'
+      ],
+      'مسعد': [
+        'سلمانة',
+        'سد الرحال',
+        'مسعد',
+        'قطارة',
+        'دلدول',
+        'أم العظام',
+        'فيض البطمة',
+        'عمورة'
+      ]
+    };
+
+
+    // ---- DOM refs ----
+    const wilayaEl = document.getElementById('wilaya');
+    const communeEl = document.getElementById('commune');
+    const deliveryCards = document.querySelectorAll('.delivery-card');
+    const pricingSummary = document.getElementById('pricingSummary');
+    const summaryDelivery = document.getElementById('summaryDelivery');
+    const summaryTotal = document.getElementById('summaryTotal');
+    const btnTotal = document.getElementById('btnTotal');
+    const submitBtn = document.getElementById('submitBtn');
+    const formBody = document.getElementById('formBody');
+    const successMsg = document.getElementById('successMsg');
+
+    let selectedDelivery = null;
+
+    // ---- Populate wilayas ----
+    WILAYAS.forEach(w => {
+      const opt = document.createElement('option');
+      opt.value = w;
+      opt.textContent = w;
+      wilayaEl.appendChild(opt);
+    });
+
+    // ---- Wilaya change -> populate communes ----
+    wilayaEl.addEventListener('change', function() {
+      const wilaya = this.value;
+      communeEl.innerHTML = '<option value="">اختر البلدية</option>';
+      communeEl.disabled = !wilaya;
+      if (wilaya && COMMUNES[wilaya]) {
+        COMMUNES[wilaya].forEach(c => {
+          const opt = document.createElement('option');
+          opt.value = c;
+          opt.textContent = c;
+          communeEl.appendChild(opt);
+        });
+      }
+      communeEl.value = '';
+      updatePricing();
+    });
+
+    // ---- Commune change ----
+    communeEl.addEventListener('change', updatePricing);
+
+    // ---- Custom dropdown init ----
+    function initCustomSelect(selectId, customId) {
+      const select = document.getElementById(selectId);
+      const custom = document.getElementById(customId);
+      const trigger = custom.querySelector('.select-trigger');
+      const textEl = custom.querySelector('.select-trigger-text');
+      const list = custom.querySelector('.select-options');
+
+      function buildOptions() {
+        list.innerHTML = '';
+        Array.from(select.options).forEach((opt, i) => {
+          const li = document.createElement('li');
+          li.textContent = opt.textContent;
+          li.dataset.value = opt.value;
+          li.dataset.index = i;
+          if (i === 0) li.classList.add('placeholder-option');
+          if (opt.selected) {
+            li.classList.add('selected');
+            textEl.textContent = opt.textContent;
+            textEl.classList.toggle('placeholder', i === 0);
+          }
+          li.addEventListener('click', function(e) {
+            e.stopPropagation();
+            select.value = opt.value;
+            textEl.textContent = opt.textContent;
+            textEl.classList.toggle('placeholder', i === 0);
+            list.querySelectorAll('li').forEach(function(l) { l.classList.remove('selected'); });
+            li.classList.add('selected');
+            closeDropdown();
+            select.dispatchEvent(new Event('change', { bubbles: true }));
+            const wrapper = select.closest('.input-wrap');
+            if (wrapper) {
+              wrapper.classList.remove('has-error');
+              var err = wrapper.parentElement.querySelector('.field-error');
+              if (err) err.style.display = 'none';
+            }
+          });
+          list.appendChild(li);
+        });
+        if (select.disabled) { custom.classList.add('disabled'); }
+        else { custom.classList.remove('disabled'); }
+      }
+
+      function openDropdown() {
+        if (custom.classList.contains('disabled')) return;
+        buildOptions();
+        custom.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function closeDropdown() {
+        custom.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }
+
+      trigger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (custom.classList.contains('open')) closeDropdown();
+        else openDropdown();
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!custom.contains(e.target)) closeDropdown();
+      });
+
+      trigger.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); trigger.click(); }
+        if (e.key === 'Escape') closeDropdown();
+      });
+
+      buildOptions();
+      return { buildOptions: buildOptions, closeDropdown: closeDropdown, openDropdown: openDropdown };
+    }
+
+    var customWilaya = initCustomSelect('wilaya', 'customWilaya');
+    var customCommune = initCustomSelect('commune', 'customCommune');
+
+    wilayaEl.addEventListener('change', function() {
+      customCommune.buildOptions();
+      customCommune.closeDropdown();
+    });
+
+    // ---- Delivery toggle ----
+    deliveryCards.forEach(card => {
+      card.addEventListener('click', function() {
+        deliveryCards.forEach(c => c.classList.remove('active'));
+        this.classList.add('active');
+        selectedDelivery = this.dataset.value;
+        updatePricing();
+      });
+    });
+
+    // ---- Package toggle ----
+    const pkgCards = document.querySelectorAll('.pkg-card');
+    pkgCards.forEach(card => {
+      card.addEventListener('click', function() {
+        pkgCards.forEach(c => c.classList.remove('active'));
+        this.classList.add('active');
+        selectedPackage = this.dataset.pkg;
+        document.getElementById('packageError').style.display = 'none';
+        updatePricing();
+      });
+    });
+
+    // ---- Pricing logic ----
+    function updatePricing() {
+      const wilaya = wilayaEl.value;
+      const commune = communeEl.value;
+
+      if (!selectedPackage || !wilaya || !commune || !selectedDelivery) {
+        pricingSummary.style.display = 'none';
+        submitBtn.disabled = true;
+        return;
+      }
+
+      const basePrice = PACKAGE_PRICES[selectedPackage];
+      const isRemote = REMOTE_WILAYAS.includes(wilaya);
+      const prices = DELIVERY_PRICES[selectedDelivery];
+      const deliveryPrice = isRemote ? prices.remote : prices.normal;
+      const total = basePrice + deliveryPrice;
+
+      pricingSummary.style.display = 'block';
+      document.getElementById('summaryProduct').textContent = basePrice.toLocaleString() + ' دج';
+      summaryDelivery.textContent = 'مجاني ✓';
+      summaryTotal.textContent = total.toLocaleString() + ' دج';
+      btnTotal.textContent = total.toLocaleString() + ' دج';
+      submitBtn.disabled = false;
+    }
+
+    // ---- Form validation & submit ----
+    submitBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      let valid = true;
+
+      // Name
+      const name = document.getElementById('fullName').value.trim();
+      if (!name) {
+        document.getElementById('nameError').style.display = 'block';
+        document.getElementById('fullName').parentElement.classList.add('has-error');
+        valid = false;
+      } else {
+        document.getElementById('nameError').style.display = 'none';
+        document.getElementById('fullName').parentElement.classList.remove('has-error');
+      }
+
+      // Phone
+      const phone = document.getElementById('phone').value.trim();
+      const phoneRegex = /^(05|06|07)\d{8}$/;
+      if (!phoneRegex.test(phone)) {
+        document.getElementById('phoneError').style.display = 'block';
+        document.getElementById('phone').parentElement.classList.add('has-error');
+        valid = false;
+      } else {
+        document.getElementById('phoneError').style.display = 'none';
+        document.getElementById('phone').parentElement.classList.remove('has-error');
+      }
+
+      // Wilaya
+      if (!wilayaEl.value) {
+        document.getElementById('wilayaError').style.display = 'block';
+        wilayaEl.parentElement.classList.add('has-error');
+        valid = false;
+      } else {
+        document.getElementById('wilayaError').style.display = 'none';
+        wilayaEl.parentElement.classList.remove('has-error');
+      }
+
+      // Commune
+      if (!communeEl.value) {
+        document.getElementById('communeError').style.display = 'block';
+        communeEl.parentElement.classList.add('has-error');
+        valid = false;
+      } else {
+        document.getElementById('communeError').style.display = 'none';
+        communeEl.parentElement.classList.remove('has-error');
+      }
+
+      // Package
+      if (!selectedPackage) {
+        document.getElementById('packageError').style.display = 'block';
+        valid = false;
+      } else {
+        document.getElementById('packageError').style.display = 'none';
+      }
+
+      // Delivery
+      if (!selectedDelivery) {
+        document.getElementById('deliveryError').style.display = 'block';
+        valid = false;
+      } else {
+        document.getElementById('deliveryError').style.display = 'none';
+      }
+
+      if (!valid) return;
+
+      // TODO: ربط هذا المكان مع Shopify Checkout API
+      // ================================================================
+      // عند اكتمال الطلب، أرسل البيانات إلى Shopify:
+      // {
+      //   fullName: name,
+      //   phone: phone,
+      //   wilaya: wilayaEl.value,
+      //   commune: communeEl.value,
+      //   deliveryType: selectedDelivery,
+      //   total: PACKAGE_PRICES[selectedPackage] + deliveryPrice
+      // }
+      // ================================================================
+
+      // ---- Show success ----
+      formBody.style.display = 'none';
+      successMsg.classList.add('show');
+    });
+
+    // ---- Real-time validation removal on input ----
+    document.querySelectorAll('.input-wrap input, .input-wrap select').forEach(el => {
+      el.addEventListener('input', function() {
+        this.parentElement.classList.remove('has-error');
+        const err = this.parentElement.parentElement.querySelector('.field-error');
+        if (err) err.style.display = 'none';
+      });
+    });
+
+    // ---- console for debugging ----
+    console.log('أكاديمية الخبير — Landing Page loaded');
+    console.log('السعر الأساسي:', PACKAGE_PRICES[selectedPackage], 'دج');
+  </script>
+</body>
+</html>
+
+
