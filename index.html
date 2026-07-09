@@ -472,6 +472,9 @@
 
     /* ---- Submit button ---- */
     .submit-btn {
+      position: relative;
+      z-index: 1;
+      pointer-events: auto;
       width: 100%;
       padding: 16px;
       background: var(--success-green);
@@ -1501,13 +1504,15 @@
       cursor: pointer;
       text-decoration: none;
       box-shadow: 0 4px 24px rgba(201,162,39,0.35);
-      transition: opacity 0.4s ease;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
       opacity: 0;
+      visibility: hidden;
       pointer-events: none;
       white-space: nowrap;
     }
     .global-cta.visible {
       opacity: 1;
+      visibility: visible;
       pointer-events: auto;
     }
     .global-cta .cta-inner {
@@ -2074,7 +2079,7 @@
     // ================================================================
 
     // ---- Google Apps Script endpoint (أدخل الرابط بعد النشر) ----
-    const ORDER_ENDPOINT = "https://script.google.com/macros/s/AKfycbxj3ry-Gcc2b00fitLVeOA7YGePghcv54ub8ZsGS-Ur8hwqxS3x7Ol55zxPUBlBkGQceQ/exec";
+    const ORDER_ENDPOINT = "https://script.google.com/macros/s/AKfycbzZeO3pcwNQx42F4to540jPjnNv4cZp5Je0oI7sCddLDXbcVLlWK6p4ocMzEpyfEt_KaQ/exec";
 
     // ---- DATA ----
     const PACKAGE_PRICES = { bundle: 7900, book: 3500, flash: 6900 };
@@ -4051,9 +4056,12 @@
       submitBtn.disabled = false;
     }
 
+    updatePricing();
+
     // ---- Form validation & submit ----
     submitBtn.addEventListener('click', function(e) {
       e.preventDefault();
+      console.log('submit button clicked');
 
       let valid = true;
 
@@ -4130,9 +4138,17 @@
       submitBtn.innerHTML = 'جارٍ إرسال طلبك...<span class="spinner"></span>';
 
       async function submitOrder() {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 15000);
+
         try {
           await fetch(ORDER_ENDPOINT, {
             method: "POST",
+            mode: "no-cors",
+            headers: {
+              "Content-Type": "text/plain;charset=utf-8"
+            },
+            signal: controller.signal,
             body: JSON.stringify({
               fullName: name,
               phone: phone,
@@ -4143,21 +4159,12 @@
               total: totalPrice
             })
           });
+          clearTimeout(timeoutId);
         } catch (err) {
+          clearTimeout(timeoutId);
           console.error('فشل إرسال الطلب إلى السيرفر:', err);
-          try {
-            localStorage.setItem('failedOrder_' + Date.now(), JSON.stringify({
-              fullName: name,
-              phone: phone,
-              wilaya: wilayaEl.value,
-              commune: communeEl.value,
-              deliveryType: selectedDelivery,
-              package: selectedPackage,
-              total: totalPrice,
-              timestamp: new Date().toISOString()
-            }));
-          } catch (e) { /* localStorage قد يكون ممتلئًا */ }
         }
+
         // ---- Show success regardless of network result ----
         formBody.style.display = 'none';
         successMsg.classList.add('show');
