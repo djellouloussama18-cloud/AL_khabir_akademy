@@ -1119,6 +1119,58 @@
       margin-right: auto;
     }
 
+    /* ===== Flash — OTG Phone Compatibility ===== */
+    .flash-otg-block {
+      margin-top: 36px;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      text-align: right;
+    }
+    .flash-otg-block .otg-img-wrap {
+      flex: 0 0 280px;
+      max-width: 400px;
+      position: relative;
+    }
+    .flash-otg-block .otg-img-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -15px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(201,162,39,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .flash-otg-block .otg-img-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      position: relative;
+      z-index: 1;
+      animation: gentleFloat 5s ease-in-out infinite 1s;
+      filter: drop-shadow(0 15px 30px rgba(0,0,0,0.5));
+      -webkit-mask-image: radial-gradient(ellipse, black 65%, transparent 100%);
+      mask-image: radial-gradient(ellipse, black 65%, transparent 100%);
+    }
+    .flash-otg-block .otg-text {
+      flex: 1;
+    }
+    .flash-otg-block .otg-text h4 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(17px, 2.5vw, 22px);
+      background: linear-gradient(135deg, var(--gold-bright), var(--gold-deep));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 10px;
+    }
+    .flash-otg-block .otg-text p {
+      font-size: 14px;
+      color: var(--gold-pale);
+      line-height: 1.8;
+      max-width: 420px;
+    }
+
     /* ===== Block 7 — Telegram Consultation ===== */
     .block-telegram {
       text-align: center;
@@ -1399,6 +1451,9 @@
       .block-flash .flash-layout { flex-direction: column !important; gap: 24px; }
       .block-flash .flash-img-wrap { flex: 0 0 170px; }
       .block-flash .flash-text p { font-size: 14px; }
+      .flash-otg-block { flex-direction: column !important; gap: 20px; text-align: center; }
+      .flash-otg-block .otg-img-wrap { flex: 0 0 180px; max-width: 320px; }
+      .flash-otg-block .otg-text p { margin: 0 auto; font-size: 14px; }
       .block-telegram .telegram-icon { width: 70px; height: 70px; }
       .block-telegram p { font-size: 14px; }
       .block-cta { padding-bottom: 60px !important; }
@@ -1818,6 +1873,18 @@
             <p>في علبة الفلاش الذهبية: فيديوهات شرح تفصيلية، نماذج عقود قابلة للتعديل، وثائق مرجعية، وقوالب فحص جاهزة. كل ما تحتاجه في متناول يدك رقمياً لأي وقت تحتاج إليه.</p>
           </div>
         </div>
+
+        <!-- OTG Phone Compatibility -->
+        <div class="flash-otg-block reveal">
+          <div class="otg-img-wrap">
+            <img src="images/otg-phone-compatibility.svg" alt="OTG Phone Compatibility - يعمل مع الهاتف">
+          </div>
+          <div class="otg-text">
+            <h4>يعمل حتى بدون حاسوب!</h4>
+            <p>لا تملك حاسوبًا؟ لا مشكلة. الفلاش ديسك يعمل مباشرة مع هاتفك الأندرويد عبر وصلة OTG بكل سهولة — تمامًا كما يعمل على أي جهاز آخر. كل المحتوى الرقمي متاح في أي وقت ومن أي مكان، حتى لو لم يكن لديك جهاز كمبيوتر.</p>
+          </div>
+        </div>
+
       </div>
     </div>
 

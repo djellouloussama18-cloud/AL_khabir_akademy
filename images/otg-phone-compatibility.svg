@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#2b1638"/>
+      <stop offset="100%" stop-color="#0a0806"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#eecb7a"/>
+      <stop offset="100%" stop-color="#c9a227"/>
+    </linearGradient>
+    <linearGradient id="goldDim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(238,203,122,0.3)"/>
+      <stop offset="100%" stop-color="rgba(201,162,39,0.15)"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg)" rx="40"/>
+  <circle cx="200" cy="200" r="160" fill="url(#bg)" stroke="url(#goldDim)" stroke-width="2"/>
+  <!-- Phone body -->
+  <rect x="155" y="70" width="90" height="260" rx="14" fill="url(#bg)" stroke="url(#gold)" stroke-width="2"/>
+  <rect x="162" y="85" width="76" height="220" rx="8" fill="#120c0f"/>
+  <!-- Screen -->
+  <rect x="168" y="95" width="64" height="130" rx="4" fill="url(#goldDim)"/>
+  <!-- Screen content lines -->
+  <line x1="176" y1="115" x2="224" y2="115" stroke="url(#gold)" stroke-width="1.5" opacity="0.5"/>
+  <line x1="176" y1="130" x2="224" y2="130" stroke="url(#gold)" stroke-width="1.5" opacity="0.5"/>
+  <line x1="176" y1="145" x2="210" y2="145" stroke="url(#gold)" stroke-width="1.5" opacity="0.5"/>
+  <!-- USB icon on phone side -->
+  <rect x="230" y="185" width="20" height="14" rx="3" fill="url(#gold)"/>
+  <polygon points="250,185 265,192 250,199" fill="url(#gold)"/>
+  <!-- Flash icon -->
+  <rect x="265" y="188" width="50" height="18" rx="4" fill="url(#gold)" opacity="0.4"/>
+  <polygon points="295,185 310,192 295,199 280,192" fill="url(#gold)" opacity="0.6"/>
+  <!-- Home button -->
+  <circle cx="200" cy="315" r="8" fill="none" stroke="url(#gold)" stroke-width="1.2" opacity="0.4"/>
+  <!-- Label text "OTG" -->
+  <text x="200" y="370" text-anchor="middle" font-family="Tajawal, sans-serif" font-size="18" font-weight="700" fill="url(#gold)" opacity="0.6">OTG</text>
+</svg>
