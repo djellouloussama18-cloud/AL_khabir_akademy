@@ -446,6 +446,37 @@
       font-size: 12px;
       color: var(--text-muted);
     }
+    .delivery-card.home-prominent {
+      position: relative;
+      border: 2px solid var(--gold);
+      background: linear-gradient(135deg, var(--gold-bright), var(--gold));
+      padding: 22px 14px;
+      box-shadow: 0 4px 20px rgba(201,162,39,0.25);
+    }
+    .delivery-card.home-prominent .d-title,
+    .delivery-card.home-prominent .d-sub {
+      color: var(--obsidian);
+    }
+    .delivery-card.home-prominent .d-icon svg {
+      stroke: var(--obsidian);
+    }
+    .delivery-card.home-prominent.active {
+      box-shadow: 0 4px 28px rgba(201,162,39,0.35);
+    }
+    .home-badge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: linear-gradient(135deg, #e74c3c, #c0392b);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 0 16px 0 12px;
+      font-family: var(--font-body);
+      white-space: nowrap;
+      z-index: 2;
+    }
 
     /* ---- Pricing summary ---- */
     .pricing-summary {
@@ -1351,6 +1382,106 @@
       text-align: center;
     }
 
+    /* ===== Block — Testimonials ===== */
+    .block-testimonials h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(22px, 4vw, 30px);
+      background: linear-gradient(135deg, var(--gold-bright), var(--gold-deep));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .testimonials-wrap {
+      position: relative;
+      max-width: 100%;
+    }
+    .testimonials-track {
+      display: flex;
+      gap: 22px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: var(--gold) transparent;
+      padding: 8px 4px 16px;
+      scroll-behavior: smooth;
+    }
+    .testimonials-track::-webkit-scrollbar {
+      height: 6px;
+    }
+    .testimonials-track::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .testimonials-track::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border-radius: 3px;
+    }
+    .testimonial-card {
+      flex: 0 0 auto;
+      scroll-snap-align: start;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      border-radius: 12px;
+      overflow: hidden;
+      filter: drop-shadow(0 4px 16px rgba(0,0,0,0.35));
+    }
+    .testimonial-card img {
+      height: 100%;
+      width: auto;
+      max-width: none;
+      object-fit: contain;
+      border-radius: 12px;
+      display: block;
+    }
+    .t-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 5;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      background: rgba(10,8,6,0.7);
+      color: var(--gold-bright);
+      font-size: 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      transition: background 0.25s, transform 0.25s;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .testimonials-wrap:hover .t-arrow,
+    .t-arrow:focus-visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .t-arrow:hover {
+      background: rgba(201,162,39,0.2);
+      transform: translateY(-50%) scale(1.08);
+    }
+    .t-arrow--left { right: -8px; }
+    .t-arrow--right { left: -8px; }
+    .t-arrow:active { transform: translateY(-50%) scale(0.95); }
+    @media (max-width: 768px) {
+      .testimonial-card { height: 300px; }
+      .t-arrow { display: none; }
+      .testimonials-track {
+        scrollbar-width: none;
+        padding: 8px 0 12px;
+      }
+      .testimonials-track::-webkit-scrollbar { display: none; }
+      .testimonials-track { -ms-overflow-style: none; }
+    }
+
     /* ===== Block — FAQ ===== */
     .block-faq {
       padding-bottom: 20px !important;
@@ -1570,8 +1701,8 @@
       <div class="hero-logo">
         <img src="images/logo.jpeg" alt="El Khabir Academy">
       </div>
-      <h1>كل ما تحتاجه لتصبح خبيرًا عقاريًا... مهما كان مجالك</h1>
-      <p class="subtitle">دليلك الكامل لفهم القانون العقاري، من الفحص إلى التملك، بثقة واحترافية</p>
+      <h1>إذا كنت تريد النجاح في العقارات... فهذا كل ما تحتاجه</h1>
+      <p class="subtitle">دليلك الكامل لفهم القانون العقاري والتسويق العقاري، فحص الوثائق، من الفحص إلى التملك، بثقة واحترافية</p>
       <div class="hero-trust">🚚 الدفع عند الاستلام — توصيل مجاني لكل الولايات</div>
       <div class="hero-product">
         <img src="images/product-hero.png" alt="دليل أول صفقة عقارية والعلبة الذهبية">
@@ -1963,6 +2094,26 @@
       </div>
     </div>
 
+    <!-- Block — Testimonials -->
+    <div class="block block-testimonials">
+      <div class="block-inner">
+        <h2 class="reveal">ماذا يقول عملاؤنا الحقيقيون؟</h2>
+        <div class="testimonials-wrap reveal">
+          <div class="testimonials-track" id="testimonialsTrack">
+            <div class="testimonial-card"><img src="images/testimonial-1.jpg" alt="شهادة عميل ١" loading="lazy"></div>
+            <div class="testimonial-card"><img src="images/testimonial-2.jpg" alt="شهادة عميل ٢" loading="lazy"></div>
+            <div class="testimonial-card"><img src="images/testimonial-3.jpg" alt="شهادة عميل ٣" loading="lazy"></div>
+            <div class="testimonial-card"><img src="images/testimonial-4.jpg" alt="شهادة عميل ٤" loading="lazy"></div>
+            <div class="testimonial-card"><img src="images/testimonial-5.jpg" alt="شهادة عميل ٥" loading="lazy"></div>
+            <div class="testimonial-card"><img src="images/testimonial-6.jpg" alt="شهادة عميل ٦" loading="lazy"></div>
+            <div class="testimonial-card"><img src="images/testimonial-7.jpg" alt="شهادة عميل ٧" loading="lazy"></div>
+          </div>
+          <button class="t-arrow t-arrow--left" id="tArrowLeft" aria-label="السابق">‹</button>
+          <button class="t-arrow t-arrow--right" id="tArrowRight" aria-label="التالي">›</button>
+        </div>
+      </div>
+    </div>
+
     <!-- Block 9 — FAQ -->
     <div class="block block-faq">
       <div class="block-inner">
@@ -2074,6 +2225,19 @@
       orderForm.scrollIntoView({ behavior: 'smooth' });
     });
 
+    // ---- Testimonials carousel arrows ----
+    const testimonialsTrack = document.getElementById('testimonialsTrack');
+    const tArrowLeft = document.getElementById('tArrowLeft');
+    const tArrowRight = document.getElementById('tArrowRight');
+    if (testimonialsTrack && tArrowLeft && tArrowRight) {
+      tArrowLeft.addEventListener('click', function() {
+        testimonialsTrack.scrollBy({ left: 360, behavior: 'smooth' });
+      });
+      tArrowRight.addEventListener('click', function() {
+        testimonialsTrack.scrollBy({ left: -360, behavior: 'smooth' });
+      });
+    }
+
     // ================================================================
     // TODO: ربط حقيقي لـ API شركة التوصيل بعد ربط شوبيفاي
     // ================================================================
@@ -2092,8 +2256,8 @@
 
     // TODO: استبدل جدول الأسعار هذا بربط API حقيقي لشركة التوصيل
     const DELIVERY_PRICES = {
-      desk: { normal: 0, remote: 0 },
-      home: { normal: 0, remote: 0 }
+      desk: { normal: 400, remote: 500 },
+      home: { normal: 600, remote: 800 }
     };
     // الولايات البعيدة (الجنوب)
     const REMOTE_WILAYAS = [
@@ -4027,6 +4191,7 @@
         this.classList.add('active');
         selectedPackage = this.dataset.pkg;
         document.getElementById('packageError').style.display = 'none';
+        updateDeliveryCardStyling();
         updatePricing();
       });
     });
@@ -4045,18 +4210,41 @@
       const basePrice = PACKAGE_PRICES[selectedPackage];
       const isRemote = REMOTE_WILAYAS.includes(wilaya);
       const prices = DELIVERY_PRICES[selectedDelivery];
-      const deliveryPrice = isRemote ? prices.remote : prices.normal;
+      let deliveryPrice;
+      if (selectedPackage === 'book') {
+        deliveryPrice = isRemote ? prices.remote : prices.normal;
+      } else {
+        deliveryPrice = 0;
+      }
       const total = basePrice + deliveryPrice;
 
       pricingSummary.style.display = 'block';
       document.getElementById('summaryProduct').textContent = basePrice.toLocaleString() + ' دج';
-      summaryDelivery.textContent = 'مجاني ✓';
+      summaryDelivery.textContent = deliveryPrice === 0 ? 'مجاني ✓' : deliveryPrice.toLocaleString() + ' دج';
       summaryTotal.textContent = total.toLocaleString() + ' دج';
       btnTotal.textContent = total.toLocaleString() + ' دج';
       submitBtn.disabled = false;
     }
 
+    function updateDeliveryCardStyling() {
+      const homeCard = document.querySelector('.delivery-card[data-value="home"]');
+      if (!homeCard) return;
+      homeCard.classList.add('home-prominent');
+      const existingBadge = homeCard.querySelector('.home-badge');
+      if (selectedPackage === 'bundle' || selectedPackage === 'flash') {
+        if (!existingBadge) {
+          const badge = document.createElement('div');
+          badge.className = 'home-badge';
+          badge.textContent = 'توصيل مجاني 🚚';
+          homeCard.appendChild(badge);
+        }
+      } else {
+        if (existingBadge) existingBadge.remove();
+      }
+    }
+
     updatePricing();
+    updateDeliveryCardStyling();
 
     // ---- Form validation & submit ----
     submitBtn.addEventListener('click', function(e) {
