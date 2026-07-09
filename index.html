@@ -500,6 +500,25 @@
       transform: none;
       box-shadow: none;
     }
+    .submit-btn.loading {
+      animation: btnPulse 1s ease-in-out infinite;
+    }
+    .submit-btn .spinner {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    @keyframes btnPulse {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
+    }
 
     /* ---- Success message ---- */
     .success-msg {
@@ -2053,6 +2072,9 @@
     // ================================================================
     // TODO: ربط حقيقي لـ API شركة التوصيل بعد ربط شوبيفاي
     // ================================================================
+
+    // ---- Google Apps Script endpoint (أدخل الرابط بعد النشر) ----
+    const ORDER_ENDPOINT = "PASTE_URL_HERE";
 
     // ---- DATA ----
     const PACKAGE_PRICES = { bundle: 7900, book: 3500, flash: 6900 };
@@ -4096,22 +4118,52 @@
 
       if (!valid) return;
 
-      // TODO: ربط هذا المكان مع Shopify Checkout API
-      // ================================================================
-      // عند اكتمال الطلب، أرسل البيانات إلى Shopify:
-      // {
-      //   fullName: name,
-      //   phone: phone,
-      //   wilaya: wilayaEl.value,
-      //   commune: communeEl.value,
-      //   deliveryType: selectedDelivery,
-      //   total: PACKAGE_PRICES[selectedPackage] + deliveryPrice
-      // }
-      // ================================================================
+      // ---- إرسال الطلب إلى Google Sheets عبر Apps Script ----
+      const basePrice = PACKAGE_PRICES[selectedPackage];
+      const isRemote = REMOTE_WILAYAS.includes(wilayaEl.value);
+      const prices = DELIVERY_PRICES[selectedDelivery];
+      const deliveryPrice = isRemote ? prices.remote : prices.normal;
+      const totalPrice = basePrice + deliveryPrice;
 
-      // ---- Show success ----
-      formBody.style.display = 'none';
-      successMsg.classList.add('show');
+      submitBtn.disabled = true;
+      submitBtn.classList.add('loading');
+      submitBtn.innerHTML = 'جارٍ إرسال طلبك...<span class="spinner"></span>';
+
+      async function submitOrder() {
+        try {
+          await fetch(ORDER_ENDPOINT, {
+            method: "POST",
+            body: JSON.stringify({
+              fullName: name,
+              phone: phone,
+              wilaya: wilayaEl.value,
+              commune: communeEl.value,
+              deliveryType: selectedDelivery,
+              package: selectedPackage,
+              total: totalPrice
+            })
+          });
+        } catch (err) {
+          console.error('فشل إرسال الطلب إلى السيرفر:', err);
+          try {
+            localStorage.setItem('failedOrder_' + Date.now(), JSON.stringify({
+              fullName: name,
+              phone: phone,
+              wilaya: wilayaEl.value,
+              commune: communeEl.value,
+              deliveryType: selectedDelivery,
+              package: selectedPackage,
+              total: totalPrice,
+              timestamp: new Date().toISOString()
+            }));
+          } catch (e) { /* localStorage قد يكون ممتلئًا */ }
+        }
+        // ---- Show success regardless of network result ----
+        formBody.style.display = 'none';
+        successMsg.classList.add('show');
+      }
+
+      submitOrder();
     });
 
     // ---- Real-time validation removal on input ----
