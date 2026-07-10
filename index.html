@@ -4205,16 +4205,8 @@
     });
 
     // ---- Pricing logic ----
-    function updatePricing() {
+    function calculateTotal() {
       const wilaya = wilayaEl.value;
-      const commune = communeEl.value;
-
-      if (!selectedPackage || !wilaya || !commune || !selectedDelivery) {
-        pricingSummary.style.display = 'none';
-        submitBtn.disabled = true;
-        return;
-      }
-
       const basePrice = PACKAGE_PRICES[selectedPackage];
       const isRemote = REMOTE_WILAYAS.includes(wilaya);
       const prices = DELIVERY_PRICES[selectedDelivery];
@@ -4225,6 +4217,20 @@
         deliveryPrice = 0;
       }
       const total = basePrice + deliveryPrice;
+      return { basePrice, deliveryPrice, total };
+    }
+
+    function updatePricing() {
+      const wilaya = wilayaEl.value;
+      const commune = communeEl.value;
+
+      if (!selectedPackage || !wilaya || !commune || !selectedDelivery) {
+        pricingSummary.style.display = 'none';
+        submitBtn.disabled = true;
+        return;
+      }
+
+      const { basePrice, deliveryPrice, total } = calculateTotal();
 
       pricingSummary.style.display = 'block';
       document.getElementById('summaryProduct').textContent = basePrice.toLocaleString() + ' دج';
@@ -4323,11 +4329,7 @@
       if (!valid) return;
 
       // ---- إرسال الطلب إلى Google Sheets عبر Apps Script ----
-      const basePrice = PACKAGE_PRICES[selectedPackage];
-      const isRemote = REMOTE_WILAYAS.includes(wilayaEl.value);
-      const prices = DELIVERY_PRICES[selectedDelivery];
-      const deliveryPrice = isRemote ? prices.remote : prices.normal;
-      const totalPrice = basePrice + deliveryPrice;
+      const { total: totalPrice } = calculateTotal();
 
       submitBtn.disabled = true;
       submitBtn.classList.add('loading');
