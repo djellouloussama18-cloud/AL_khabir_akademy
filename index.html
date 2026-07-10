@@ -1473,10 +1473,18 @@
     .t-arrow:active { transform: translateY(-50%) scale(0.95); }
     @media (max-width: 768px) {
       .testimonial-card { height: 300px; }
-      .t-arrow { display: none; }
+      .t-arrow {
+        opacity: 1;
+        pointer-events: auto;
+        width: 42px;
+        height: 42px;
+        font-size: 22px;
+      }
+      .t-arrow--left { right: 4px; }
+      .t-arrow--right { left: 4px; }
       .testimonials-track {
         scrollbar-width: none;
-        padding: 8px 0 12px;
+        padding: 8px 12px 12px;
       }
       .testimonials-track::-webkit-scrollbar { display: none; }
       .testimonials-track { -ms-overflow-style: none; }
@@ -1952,6 +1960,26 @@
       </div>
     </div>
 
+    <!-- Block — Testimonials -->
+    <div class="block block-testimonials">
+      <div class="block-inner">
+        <h2 class="reveal">ماذا يقول عملاؤنا الحقيقيون؟</h2>
+        <div class="testimonials-wrap reveal">
+          <div class="testimonials-track" id="testimonialsTrack">
+            <div class="testimonial-card"><img src="images/testimonial-1.jpg" alt="شهادة عميل ١" loading="lazy"></div>
+            <div class="testimonial-card"><img src="images/testimonial-2.jpg" alt="شهادة عميل ٢" loading="lazy"></div>
+            <div class="testimonial-card"><img src="images/testimonial-3.jpg" alt="شهادة عميل ٣" loading="lazy"></div>
+            <div class="testimonial-card"><img src="images/testimonial-4.jpg" alt="شهادة عميل ٤" loading="lazy"></div>
+            <div class="testimonial-card"><img src="images/testimonial-5.jpg" alt="شهادة عميل ٥" loading="lazy"></div>
+            <div class="testimonial-card"><img src="images/testimonial-6.jpg" alt="شهادة عميل ٦" loading="lazy"></div>
+            <div class="testimonial-card"><img src="images/testimonial-7.jpg" alt="شهادة عميل ٧" loading="lazy"></div>
+          </div>
+          <button class="t-arrow t-arrow--left" id="tArrowLeft" aria-label="السابق">‹</button>
+          <button class="t-arrow t-arrow--right" id="tArrowRight" aria-label="التالي">›</button>
+        </div>
+      </div>
+    </div>
+
     <!-- Block 4 — Feature Cards -->
     <div class="block block-features">
       <div class="block-inner">
@@ -2090,26 +2118,6 @@
             <div class="vs-bonus-item">الدفع عند الاستلام</div>
           </div>
           <p class="vs-note">يمكنك أيضًا اقتناء كل منتج بشكل منفصل من الفورم أعلاه</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Block — Testimonials -->
-    <div class="block block-testimonials">
-      <div class="block-inner">
-        <h2 class="reveal">ماذا يقول عملاؤنا الحقيقيون؟</h2>
-        <div class="testimonials-wrap reveal">
-          <div class="testimonials-track" id="testimonialsTrack">
-            <div class="testimonial-card"><img src="images/testimonial-1.jpg" alt="شهادة عميل ١" loading="lazy"></div>
-            <div class="testimonial-card"><img src="images/testimonial-2.jpg" alt="شهادة عميل ٢" loading="lazy"></div>
-            <div class="testimonial-card"><img src="images/testimonial-3.jpg" alt="شهادة عميل ٣" loading="lazy"></div>
-            <div class="testimonial-card"><img src="images/testimonial-4.jpg" alt="شهادة عميل ٤" loading="lazy"></div>
-            <div class="testimonial-card"><img src="images/testimonial-5.jpg" alt="شهادة عميل ٥" loading="lazy"></div>
-            <div class="testimonial-card"><img src="images/testimonial-6.jpg" alt="شهادة عميل ٦" loading="lazy"></div>
-            <div class="testimonial-card"><img src="images/testimonial-7.jpg" alt="شهادة عميل ٧" loading="lazy"></div>
-          </div>
-          <button class="t-arrow t-arrow--left" id="tArrowLeft" aria-label="السابق">‹</button>
-          <button class="t-arrow t-arrow--right" id="tArrowRight" aria-label="التالي">›</button>
         </div>
       </div>
     </div>
