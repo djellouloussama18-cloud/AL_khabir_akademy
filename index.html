@@ -569,7 +569,7 @@ src="https://www.facebook.com/tr?id=1749093039842690&ev=PageView&noscript=1"
       50% { opacity: 1; }
     }
 
-    /* ---- Success message ---- */
+    /* ---- Success message (kept for backward compat but no longer used for UI) ---- */
     .success-msg {
       display: none;
       text-align: center;
@@ -590,6 +590,103 @@ src="https://www.facebook.com/tr?id=1749093039842690&ev=PageView&noscript=1"
     .success-msg p {
       color: var(--text-muted);
       font-size: 15px;
+    }
+
+    /* ---- Full-screen order confirmation takeover ---- */
+    .confirmation-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: linear-gradient(160deg, #0a0806 0%, #120c0f 40%, #1c0f22 100%);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      overflow-y: auto;
+      direction: rtl;
+    }
+    .confirmation-overlay.active { display: flex; }
+    .confirmation-overlay .conf-inner {
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+      animation: confFadeIn 0.6s ease-out;
+    }
+    @keyframes confFadeIn {
+      0%   { opacity: 0; transform: scale(0.92); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    .confirmation-overlay .conf-check {
+      font-size: 96px;
+      display: block;
+      margin-bottom: 16px;
+      animation: confBounce 0.8s ease-out 0.2s both;
+    }
+    @keyframes confBounce {
+      0%   { transform: scale(0); opacity: 0; }
+      50%  { transform: scale(1.15); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .confirmation-overlay .conf-glow {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,162,39,0.25) 0%, transparent 70%);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      animation: confPulse 2s ease-in-out infinite;
+    }
+    @keyframes confPulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+      50%      { transform: translate(-50%, -50%) scale(1.3); opacity: 0.3; }
+    }
+    .confirmation-overlay .conf-check-wrap {
+      position: relative;
+      display: inline-block;
+    }
+    .confirmation-overlay .conf-heading {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 28px;
+      color: var(--gold-bright);
+      margin: 20px 0 10px;
+    }
+    .confirmation-overlay .conf-body {
+      font-family: var(--font-body);
+      font-size: 17px;
+      color: #cfc6ba;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    .confirmation-overlay .conf-footer {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--gold);
+      font-weight: 700;
+      margin-top: 20px;
+    }
+    .confirmation-overlay .conf-reload {
+      display: inline-block;
+      margin-top: 32px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text-muted);
+      text-decoration: underline;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    .confirmation-overlay .conf-reload:hover {
+      color: var(--gold-bright);
+    }
+    .confirmation-overlay .conf-divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 20px auto;
+      border: 0;
     }
 
     /* ---- Inline validation ---- */
@@ -2075,7 +2172,7 @@ src="https://www.facebook.com/tr?id=1749093039842690&ev=PageView&noscript=1"
         <!-- OTG Phone Compatibility -->
         <div class="flash-otg-block reveal">
           <div class="otg-img-wrap">
-            <img src="images/otg-phone-compatibility.png" alt="OTG Phone Compatibility - يعمل مع الهاتف">
+            <img src="images/otg-phone-compatibility2.png" alt="OTG Phone Compatibility - يعمل مع الهاتف">
           </div>
           <div class="otg-text">
             <h4>يعمل حتى بدون حاسوب!</h4>
@@ -2200,7 +2297,27 @@ src="https://www.facebook.com/tr?id=1749093039842690&ev=PageView&noscript=1"
     </span>
   </a>
 
+  <!-- ===== Full-screen order confirmation overlay ===== -->
+  <div class="confirmation-overlay" id="confirmationOverlay">
+    <div class="conf-inner">
+      <div class="conf-check-wrap">
+        <div class="conf-glow"></div>
+        <span class="conf-check">✅</span>
+      </div>
+      <h2 class="conf-heading">تم تأكيد طلبك بنجاح!</h2>
+      <p class="conf-body">سيتم الاتصال بك قريباً على الرقم المدخل لتأكيد العنوان والتوصيل.</p>
+      <hr class="conf-divider">
+      <p class="conf-footer">شكراً لثقتك في أكاديمية الخبير 🏅</p>
+      <span class="conf-reload" onclick="location.reload()">العودة للصفحة الرئيسية</span>
+    </div>
+  </div>
+
   <script>
+    function getCookie(name) {
+      const match = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+      return match ? match.pop() : '';
+    }
+
     // ---- Scroll-reveal animations ----
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -4354,6 +4471,8 @@ src="https://www.facebook.com/tr?id=1749093039842690&ev=PageView&noscript=1"
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 15000);
         const eventId = 'lead_' + Date.now();
+        const fbc = getCookie('_fbc');
+        const fbp = getCookie('_fbp');
 
         try {
           await fetch(ORDER_ENDPOINT, {
@@ -4371,7 +4490,9 @@ src="https://www.facebook.com/tr?id=1749093039842690&ev=PageView&noscript=1"
               deliveryType: selectedDelivery,
               package: selectedPackage,
               total: totalPrice,
-              eventId: eventId
+              eventId: eventId,
+              fbc: fbc,
+              fbp: fbp
             })
           });
           clearTimeout(timeoutId);
@@ -4387,7 +4508,12 @@ src="https://www.facebook.com/tr?id=1749093039842690&ev=PageView&noscript=1"
 
         // ---- Show success regardless of network result ----
         formBody.style.display = 'none';
-        successMsg.classList.add('show');
+        // ---- Full-screen takeover: hide all page content, show confirmation overlay ----
+        document.body.style.overflow = 'hidden';
+        document.querySelectorAll('body > :not(script):not(.confirmation-overlay)').forEach(el => {
+          if (el.id !== 'confirmationOverlay') el.style.display = 'none';
+        });
+        document.getElementById('confirmationOverlay').classList.add('active');
       }
 
       submitOrder();
